@@ -14,16 +14,23 @@ const { Header, Content, Sider } = Layout;
 function App() {
 
   const [FirstItem , setFirstItem] = useState("BuyNow!");  
-  const [secondIten , setSecondIten] = useState("about Us!");  
+  const [secondItem , setSecondIten] = useState("about Us!");  
   const [tirdItem , setTirdItem] = useState("ContactUs");    
+
+  const [count , setcount] = useState(1); 
+  
+  function RouteName() {
+    setcount(1+count) 
+  }
+
 
 return(
 <Layout>
     <Header className="header">
       <div className="logo" />
-      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-        <Menu.Item key="1">{FirstItem}</Menu.Item>
-        <Menu.Item key="2">{secondIten}</Menu.Item>
+      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={'1'}>
+        <Menu.Item onClick={RouteName} key="1">{FirstItem}</Menu.Item>
+        <Menu.Item key="2">{secondItem}</Menu.Item>
         <Menu.Item key="3">{tirdItem}</Menu.Item>
       </Menu>
     </Header>
@@ -58,8 +65,7 @@ return(
       <Layout style={{ padding: '0 24px 24px' }}>
         <Breadcrumb style={{ margin: '16px 0' }}>
           <Breadcrumb.Item>Home</Breadcrumb.Item>
-          <Breadcrumb.Item>List</Breadcrumb.Item>
-          <Breadcrumb.Item>App</Breadcrumb.Item>
+          <Breadcrumb.Item>{count}</Breadcrumb.Item>
         </Breadcrumb>
         <Content
           className="site-layout-background"
