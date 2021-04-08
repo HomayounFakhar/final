@@ -6,8 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import Menuitems from './Menuitems';
 
 
-ReactDOM.render(<Menuitems />, document.getElementById('Menuitems'));
-
+//ReactDOM.render(<Menuitems />, document.getElementById('Menuitems'));
 
 ReactDOM.render(
   <React.StrictMode>

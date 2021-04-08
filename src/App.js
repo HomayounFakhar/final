@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from 'antd/es/button';
-//import Menuitems from 'Menuitems.js';
+import Menuitems from './Menuitems';
 import './App.css';
 
 import { Layout, Menu, Breadcrumb } from 'antd';
@@ -13,12 +13,12 @@ const { Header, Content, Sider } = Layout;
 
 function App() {
 
-  const [itemF , setFItem] = useState("BuyNow!");  
+  const [itemF , setFItem] = useState("BuyNow !");  
   const [itemS , setS2Item] = useState("Shopping Cart");  
   const [itemT , setTItem] = useState("Contact Us");    
-  const [itemC , setCItem] = useState("About Us!");      
+  const [itemC , setCItem] = useState("About Us");      
 
-  const [count , setcount] = useState(1); 
+  const [count , setcount] = useState("Buy Now !"); 
 
   function RouteName(event) {
     
@@ -31,10 +31,10 @@ return(
     <Header className="header">
       <div className="logo" />
       <Menu theme="dark" mode="horizontal" defaultSelectedKeys={'1'}>
-        <Menu.Item onClick={RouteName} key="1" names ="BuyNow!">{itemF}</Menu.Item>
+        <Menu.Item onClick={RouteName} key="1" names ="BuyNow !">{itemF}</Menu.Item>
         <Menu.Item onClick={RouteName} key="2" names ="Shopping Cart">{itemS} </Menu.Item>
-        <Menu.Item onClick={RouteName} key="3" names ="Contact Us!">{itemT}</Menu.Item>
-        <Menu.Item onClick={RouteName} key="4" names ="About Us!">{itemC}</Menu.Item>        
+        <Menu.Item onClick={RouteName} key="3" names ="Contact Us">{itemT}</Menu.Item>
+        <Menu.Item onClick={RouteName} key="4" names ="About Us">{itemC}</Menu.Item>        
       </Menu>
     </Header>
     <Layout>
@@ -78,7 +78,9 @@ return(
             minHeight: 280,
           }}
         >
-          List Should be Changed
+         
+         ReactDOM.render(<Menuitems />);
+          
         </Content>
       </Layout>
     </Layout>
