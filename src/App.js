@@ -26,7 +26,6 @@ function App() {
     setcount(event.item.props.names) 
   }
 
-
 return(
 <Layout>
     <Header className="header">
