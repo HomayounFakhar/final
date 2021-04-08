@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from 'antd/es/button';
-
+//import Menuitems from 'Menuitems.js';
 import './App.css';
 
 import { Layout, Menu, Breadcrumb } from 'antd';
@@ -19,8 +19,16 @@ function App() {
 
   const [count , setcount] = useState(1); 
   
-  function RouteName() {
-    setcount(1+count) 
+  //if (1==1) {
+  //function RouteName() {
+  //  setcount(1+count) 
+  //}
+//  }
+
+  function RouteName(event) {
+    
+    console.log(event.item.props.names)
+    setcount(event.item.props.names) 
   }
 
 
@@ -29,9 +37,9 @@ return(
     <Header className="header">
       <div className="logo" />
       <Menu theme="dark" mode="horizontal" defaultSelectedKeys={'1'}>
-        <Menu.Item onClick={RouteName} key="1">{FirstItem}</Menu.Item>
-        <Menu.Item key="2">{secondItem}</Menu.Item>
-        <Menu.Item key="3">{tirdItem}</Menu.Item>
+        <Menu.Item onClick={RouteName} key="1" names ="BuyNow!">{FirstItem}</Menu.Item>
+        <Menu.Item onClick={RouteName} key="2" names ="About Us!">{secondItem} </Menu.Item>
+        <Menu.Item onClick={RouteName} key="3" names ="ContactUs!">{tirdItem}</Menu.Item>
       </Menu>
     </Header>
     <Layout>
