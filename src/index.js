@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Menuitems from './Menuitems';
+
+
+ReactDOM.render(<Menuitems />, document.getElementById('Menuitems'));
 
 
 ReactDOM.render(
