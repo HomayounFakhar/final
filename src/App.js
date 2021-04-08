@@ -13,17 +13,12 @@ const { Header, Content, Sider } = Layout;
 
 function App() {
 
-  const [FirstItem , setFirstItem] = useState("BuyNow!");  
-  const [secondItem , setSecondIten] = useState("about Us!");  
-  const [tirdItem , setTirdItem] = useState("ContactUs");    
+  const [itemF , setFItem] = useState("BuyNow!");  
+  const [itemS , setS2Item] = useState("Shopping Cart");  
+  const [itemT , setTItem] = useState("Contact Us");    
+  const [itemC , setCItem] = useState("About Us!");      
 
   const [count , setcount] = useState(1); 
-  
-  //if (1==1) {
-  //function RouteName() {
-  //  setcount(1+count) 
-  //}
-//  }
 
   function RouteName(event) {
     
@@ -37,9 +32,10 @@ return(
     <Header className="header">
       <div className="logo" />
       <Menu theme="dark" mode="horizontal" defaultSelectedKeys={'1'}>
-        <Menu.Item onClick={RouteName} key="1" names ="BuyNow!">{FirstItem}</Menu.Item>
-        <Menu.Item onClick={RouteName} key="2" names ="About Us!">{secondItem} </Menu.Item>
-        <Menu.Item onClick={RouteName} key="3" names ="ContactUs!">{tirdItem}</Menu.Item>
+        <Menu.Item onClick={RouteName} key="1" names ="BuyNow!">{itemF}</Menu.Item>
+        <Menu.Item onClick={RouteName} key="2" names ="Shopping Cart">{itemS} </Menu.Item>
+        <Menu.Item onClick={RouteName} key="3" names ="Contact Us!">{itemT}</Menu.Item>
+        <Menu.Item onClick={RouteName} key="4" names ="About Us!">{itemC}</Menu.Item>        
       </Menu>
     </Header>
     <Layout>
