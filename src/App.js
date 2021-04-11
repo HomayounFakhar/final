@@ -13,6 +13,8 @@ const { Header, Content, Sider } = Layout;
 
 function App() {
 
+  const [DisNone , SetDisNone] = useState("DisNone");  
+
   const [itemF , setFItem] = useState("BuyNow !");  
   const [itemS , setS2Item] = useState("Shopping Cart");  
   const [itemT , setTItem] = useState("Contact Us");    
@@ -22,13 +24,20 @@ function App() {
 
   function RouteName(event) {
     
-    console.log(event.item.props.names)
-    setcount(event.item.props.names) 
+    console.log(event.item.props.names);
+    setcount(event.item.props.names);
+
+    if (event.item.props.names == "BuyNow !") {
+      SetDisNone('DisNone');    
+    }else{
+      SetDisNone('');    
+    };
+    
   }
 
 return(
 <Layout>
-    <Header className="header">
+    <Header class="header">
       <div className="logo" />
       <Menu theme="dark" mode="horizontal" defaultSelectedKeys={'1'}>
         <Menu.Item onClick={RouteName} key="1" names ="BuyNow !">{itemF}</Menu.Item>
@@ -79,8 +88,10 @@ return(
           }}
         >
          
-         ReactDOM.render(<Menuitems />);
-          
+         <div className={DisNone}>
+         <Menuitems />;
+         </div>
+
         </Content>
       </Layout>
     </Layout>
