@@ -1,6 +1,15 @@
 import React from 'react';
 import Button from 'antd/es/button';
 import Menuitems from './Menuitems';
+import BuyNow from './BuyNow';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 import './App.css';
 
 import { Layout, Menu, Breadcrumb } from 'antd';
@@ -28,22 +37,25 @@ function App() {
     setcount(event.item.props.names);
 
     if (event.item.props.names == "BuyNow !") {
-      SetDisNone('DisNone');    
-    }else{
-      SetDisNone('');    
-    };
-    
+      <Link to="/BuyNow"></Link>
+
   }
+}
 
 return(
+  <Router>
+
 <Layout>
     <Header class="header">
       <div className="logo" />
       <Menu theme="dark" mode="horizontal" defaultSelectedKeys={'1'}>
-        <Menu.Item onClick={RouteName} key="1" names ="BuyNow !">{itemF}</Menu.Item>
+      
+
+        <Menu.Item path = "/BuyNow" onClick={RouteName} key="1" names ="BuyNow !">{itemF}</Menu.Item>               
         <Menu.Item onClick={RouteName} key="2" names ="Shopping Cart">{itemS} </Menu.Item>
         <Menu.Item onClick={RouteName} key="3" names ="Contact Us">{itemT}</Menu.Item>
         <Menu.Item onClick={RouteName} key="4" names ="About Us">{itemC}</Menu.Item>        
+
       </Menu>
     </Header>
     <Layout>
@@ -87,10 +99,11 @@ return(
             minHeight: 280,
           }}
         >
-         
-         <div className={DisNone}>
-         <Menuitems />;
-         </div>
+
+         <Switch>
+					<Route path="/Test" component={Menuitems} />
+          <Route path="/BuyNow" component={BuyNow} />
+				</Switch>
 
         </Content>
       </Layout>
@@ -98,7 +111,8 @@ return(
   </Layout>
 
 
-  
+  </Router>
+
   )};
 
 export default App;
