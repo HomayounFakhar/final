@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from 'antd/es/button';
 import Menuitems from './Menuitems';
-import BuyNow from './src/BuyNow';
+import BuyNow from './pages/BuyNow';
 
 import {
   BrowserRouter as Router,
