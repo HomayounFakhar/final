@@ -1,5 +1,7 @@
 import React from 'react';
-import { Table } from 'antd';
+import { Table ,Typography} from 'antd';
+
+const { Text } = Typography;
 
 const columns = [
     {
@@ -8,18 +10,33 @@ const columns = [
       dataIndex: 'productcode',
       sorter: (a, b) => a.productcode - b.productcode,
       sortDirections: ['descend', 'ascend'],
+      render: text => <Text type="warning">{text}</Text>,
+      
     },
     {
-      title: 'Name',
-      dataIndex: 'age',
-      defaultSortOrder: 'descend',
-      sorter: (a, b) => a.age - b.age,
-    },
-    {
-      title: 'Address',
-      dataIndex: 'address',
-      sorter: (a, b) => a.address.length - b.address.length,
+      title: 'Product Name',
+      dataIndex: 'productName',
+      sorter: (a, b) => a.productName.length - b.productName.length,
       sortDirections: ['descend', 'ascend'],
+    },
+    {
+      title: 'Old Price',
+      dataIndex: 'OldPrice',
+      defaultSortOrder: 'descend',
+      sorter: (a, b) => a.Price - b.Price,
+      render: text => <Text delete>{text}</Text>,      
+    },        
+    {
+      title: 'Price',
+      dataIndex: 'Price',
+      defaultSortOrder: 'descend',
+      sorter: (a, b) => a.Price - b.Price,
+    },
+    {
+      title: 'Description',
+      dataIndex: 'description',
+      sorter: (a, b) => a.description.length - b.description.length,
+      sortDirections: ['descend', 'ascend'],  
     },
   ];
   
@@ -27,26 +44,34 @@ const columns = [
     {
       key: '1',
       productcode: 1,
-      age: 32,
-      address: 'New York No. 1 Lake Park',
+      Price: 101,
+      OldPrice : 150,
+      productName: 'Shoe',
+      description : 'Aldo Shoes for men',
     },
     {
       key: '2',
       productcode: 10,
-      age: 42,
-      address: 'London No. 1 Lake Park',
+      Price: 202,
+      OldPrice : 250,      
+      productName: 'T-Shirt',
+      description : 'T-Shirt Nike for Teen',      
     },
     {
       key: '3',
       productcode: 100,
-      age: 32,
-      address: 'Sidney No. 1 Lake Park',
+      Price: 303,
+      OldPrice : 310,      
+      productName: 'Jacket',
+      description : 'H&M Jacket for men',      
     },
     {
       key: '4',
       productcode: 1001,
-      age: 32,
-      address: 'London No. 2 Lake Park',
+      Price: 404,
+      OldPrice : 480,            
+      productName: 'jewelry',
+      description : 'Dior jewelry for Women',      
     },
   ];
   
