@@ -1,7 +1,6 @@
 import React from 'react';
-import Button from 'antd/es/button';
-import Menuitems from './Menuitems';
-import BuyNow from './pages/BuyNow';
+import './../css/App.css'
+import BuyNow from './../pages/BuyNow';
 
 import {
   BrowserRouter as Router,
@@ -10,7 +9,8 @@ import {
   Link
 } from "react-router-dom";
 
-import './App.css';
+
+
 
 import { Layout, Menu, Breadcrumb } from 'antd';
 import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
@@ -99,9 +99,8 @@ return(
             minHeight: 280,
           }}
         >
-
-         <Switch>
-					<Route path="/Test" component={Menuitems} />
+fghjkl;
+<Switch>
           <Route path="/BuyNow" component={BuyNow} />
 				</Switch>
 
