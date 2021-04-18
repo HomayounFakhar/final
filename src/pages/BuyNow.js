@@ -1,7 +1,11 @@
 import React from 'react';
 import { Table ,Typography} from 'antd';
-
+import { Image } from 'antd';
+import Online from './../img/Online.png'
+  
 const { Text } = Typography;
+
+
 
 const columns = [
     {
@@ -39,7 +43,7 @@ const columns = [
       sortDirections: ['descend', 'ascend'],  
     },
   ];
-  
+
   const data = [
     {
       key: '1',
@@ -75,23 +79,20 @@ const columns = [
     },
   ];
   
-  function onClick(event) {
-    
-    console.log("event");
-   
-    console.log(event);
-   
-  }
-
 function BuyNow() {
 
   return (
     <div>
-    <Table columns={columns} dataSource={data}  
     
+    <Image width={200} src={Online} />
+
+    <Table columns={columns} dataSource={data}      
     onRow={(record, rowIndex) => {
       return {
-        onClick: event => {console.log(record)}, // click row
+        onClick: event => {
+          console.log(record)
+        }, // click row
+
         onDoubleClick: event => {}, // double click row
         onContextMenu: event => {}, // right button click row
         onMouseEnter: event => {}, // mouse enter row

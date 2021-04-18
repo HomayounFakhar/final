@@ -2,7 +2,7 @@ import React from 'react';
 import './../css/App.css'
 import BuyNow from './../pages/BuyNow';
 import Page404 from './../pages/Page404';
-import MainPage from './../pages/Page404';
+import MainPage from './../pages/MainPage';
 
 
 import {
@@ -12,12 +12,10 @@ import {
   Link
 } from "react-router-dom";
 
-
-
-
 import { Layout, Menu, Breadcrumb } from 'antd';
 import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
 import { useState } from 'react';
+
 
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
@@ -35,12 +33,12 @@ function App() {
   const [count , setcount] = useState("Buy Now !"); 
 
   function RouteName(event) {
-    
+
     console.log(event.item.props.names);
     setcount(event.item.props.names);
 
     if (event.item.props.names == "BuyNow !") {
-      <Link to="/BuyNow"></Link>
+      <Link href="/BuyNow"  to="/BuyNow"></Link>
 
   }
 }
@@ -52,9 +50,8 @@ return(
     <Header class="header">
       <div className="logo" />
       <Menu theme="dark" mode="horizontal" defaultSelectedKeys={'1'}>
-      
 
-        <Menu.Item path = "/BuyNow" onClick={RouteName} key="1" names ="BuyNow !">{itemF}</Menu.Item>               
+        <Menu.Item onClick={RouteName} key="1" names ="BuyNow !">{itemF}</Menu.Item>                   
         <Menu.Item onClick={RouteName} key="2" names ="Shopping Cart">{itemS} </Menu.Item>
         <Menu.Item onClick={RouteName} key="3" names ="Contact Us">{itemT}</Menu.Item>
         <Menu.Item onClick={RouteName} key="4" names ="About Us">{itemC}</Menu.Item>        
@@ -62,6 +59,7 @@ return(
       </Menu>
     </Header>
     <Layout>
+     
       <Sider width={200} className="site-layout-background">
         <Menu
           mode="inline"

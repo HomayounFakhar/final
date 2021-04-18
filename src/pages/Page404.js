@@ -1,15 +1,17 @@
 import React from 'react';
-import { Typography } from 'antd';
+import { Typography ,Button , Image} from 'antd';
+import page404 from './../img/404.png'
 
-
-const { Text ,Title}  = Typography;
+const { Title}  = Typography;
 
 function Page404() {
 
   return (
     <div>
-    <Title level={2}>404</Title>
-    <Title level={2}>Page Not Found</Title>
+         <Image width={200}src={page404}/>
+         <Title level={2}>Page Not Found</Title>
+         <br></br>
+         <Button href="/" type="primary">Go To  HomePage</Button>
     </div>
   )};
 
