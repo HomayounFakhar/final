@@ -3,6 +3,7 @@ import './../css/App.css'
 import BuyNow from './../pages/BuyNow';
 import Page404 from './../pages/Page404';
 import MainPage from './../pages/MainPage';
+import Product from './../pages/Product';
 
 
 import {
@@ -104,6 +105,7 @@ return(
         <Switch>
         <Route exact path="/" component={MainPage} />                  
           <Route path="/BuyNow" component={BuyNow} />
+          <Route path="/Product" component={Product} />          
           <Route path="*" component={Page404} />
 					 
 				</Switch>
