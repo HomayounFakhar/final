@@ -5,8 +5,6 @@ import Online from './../img/Online.png'
   
 const { Text } = Typography;
 
-
-
 const columns = [
     {
      
