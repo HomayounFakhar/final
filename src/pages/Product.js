@@ -59,18 +59,24 @@ function Product() {
     const fetchData = async () => {
       const db = firebase.firestore()
       const data = await db.collection("Products").get()
-      setSpells(data.docs.map(doc => doc.data()))
+     // setSpells(data.docs.map(doc => doc.data()))
+      setSpells(data.docs.map(doc => ({ ...doc.data(),id: doc.id})))    
     }
     fetchData()
   } , [] )
 
+//const [userDetails, setUserDetails] = useState('')
+//db.collection('users').doc(id).get()
+        //.then(snapshot => setUserDetails(snapshot.data()))
+
   const OnAdd = () => 
   {
-  const db = firebase.firestore()
-  db.collection("Products").doc("4").add ({
-    ProductCode : 1 ,
-    ProductName : "Add on Function",
-    
+  firebase.firestore().collection("Products").add ({
+    ProductCode : 4 ,
+    ProductName : "Shoe",
+    OldPrice : 4000 ,
+    Price : 2500 , 
+    Description : "Aldo For men------"
   })
   }
 
@@ -82,11 +88,16 @@ return(
    onRow={(record, rowIndex) => {
     return {
       onClick: event => {
-        console.log(record.ProductCode)
-        const db = firebase.firestore()
-        db.collection("Products").doc(record.ProductCode).delete()
-        console.log(" spells.ProductCode  = "+record.ProductCode)        
-        console.log("Delete")           
+        //console.log(record.ProductCode)
+        //const db = firebase.firestore()
+        //db.collection("Products").doc(record.ProductCode).delete()
+        //console.log(" spells.ProductCode  = "+record.ProductCode)        
+        
+        //console.log(record);
+        console.log(spells);        
+
+        //console.log(spells)            
+        //console.log("Delete")           
       }, // click row
 
       onDoubleClick: event => {
