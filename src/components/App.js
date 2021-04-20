@@ -5,6 +5,8 @@ import Page404 from './../pages/Page404';
 import MainPage from './../pages/MainPage';
 import Product from './../pages/Product';
 
+import firebase from '../pages/firebase';
+
 
 import {
   BrowserRouter as Router,
@@ -23,9 +25,7 @@ const { Header, Content, Sider } = Layout;
 
 
 function App() {
-
   const [DisNone , SetDisNone] = useState("DisNone");  
-
   const [itemF , setFItem] = useState("BuyNow !");  
   const [itemS , setS2Item] = useState("Shopping Cart");  
   const [itemT , setTItem] = useState("Contact Us");    
@@ -47,7 +47,8 @@ function App() {
 return(
   <Router>
 
-<Layout>
+   
+   <Layout>
     <Header class="header">
       <div className="logo" />
       <Menu theme="dark" mode="horizontal" defaultSelectedKeys={'1'}>
@@ -105,7 +106,7 @@ return(
         <Switch>
         <Route exact path="/" component={MainPage} />                  
           <Route path="/BuyNow" component={BuyNow} />
-          <Route path="/Product" component={Product} />          
+          <Route path="/Product/:id" component={Product} />          
           <Route path="*" component={Page404} />
 					 
 				</Switch>
