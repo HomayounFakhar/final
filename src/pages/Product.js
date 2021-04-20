@@ -8,6 +8,29 @@ import Online from './../img/Online.png'
   
 const { Text } = Typography;
 
+const columns = [
+  {
+   
+    title: 'ProductName',
+    dataIndex: 'ProductName',
+    sorter: (a, b) => a.productcode - b.productcode,
+    sortDirections: ['descend', 'ascend'],
+    render: text => <Text type="warning">{text}</Text>,
+    
+  },
+];
+
+const data = [
+  {
+    key: '1',
+    productcode: 1,
+    Price: 101,
+    OldPrice : 150,
+    ProductName: 'Shoe',
+    description : 'Aldo Shoes for men',
+  },
+];
+
   // Test Firebase 
 function Product() {
   const [spells, setSpells] = React.useState([])
@@ -22,14 +45,15 @@ function Product() {
   } , [] )
 
 return(
-  <ul>
-  {spells.map(spell => (
-  <li>{spell.ProductName}</li>
-))}
-</ul>
+  
+  <> 
+  <Table columns={columns} dataSource={spells}/>
+  </>
+    
     );
 
   }
+  
   
   export default Product;
 

@@ -106,7 +106,7 @@ return(
         <Switch>
         <Route exact path="/" component={MainPage} />                  
           <Route path="/BuyNow" component={BuyNow} />
-          <Route path="/Product/:id" component={Product} />          
+          <Route path="/Product" component={Product} />          
           <Route path="*" component={Page404} />
 					 
 				</Switch>
