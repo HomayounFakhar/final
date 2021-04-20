@@ -15,11 +15,11 @@ import {
   Link
 } from "react-router-dom";
 
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Menu, Breadcrumb, Typography } from 'antd';
 import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 
-
+const { Text ,Title}  = Typography;
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
@@ -39,8 +39,7 @@ function App() {
     setcount(event.item.props.names);
 
     if (event.item.props.names == "BuyNow !") {
-      <Link href="/BuyNow"  to="/BuyNow"></Link>
-
+       console.log("In IF");
   }
 }
 
@@ -50,15 +49,24 @@ return(
    
    <Layout>
     <Header class="header">
-      <div className="logo" />
+
       <Menu theme="dark" mode="horizontal" defaultSelectedKeys={'1'}>
 
-        <Menu.Item onClick={RouteName} key="1" names ="BuyNow !">{itemF}</Menu.Item>                   
-        <Menu.Item onClick={RouteName} key="2" names ="Shopping Cart">{itemS} </Menu.Item>
-        <Menu.Item onClick={RouteName} key="3" names ="Contact Us">{itemT}</Menu.Item>
-        <Menu.Item onClick={RouteName} key="4" names ="About Us">{itemC}</Menu.Item>        
+        <Menu.Item href="/Product" type="primary" onClick={RouteName} key="1" names ="BuyNow !">{itemF}
+        <Link to="/BuyNow"></Link>
+        </Menu.Item> 
+        <Menu.Item onClick={RouteName} key="2" names ="Shopping Cart">{itemS} 
+        <Link to="/Product"></Link>
+        </Menu.Item>
+        <Menu.Item onClick={RouteName} key="3" names ="Contact Us">{itemT}
+        <Link to="/ContactUs"></Link>
+        </Menu.Item>
+        <Menu.Item onClick={RouteName} key="4" names ="About Us">{itemC}
+        <Link to="/AboutUs"></Link>
+        </Menu.Item>        
 
       </Menu>
+
     </Header>
     <Layout>
      

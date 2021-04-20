@@ -5,7 +5,6 @@ import firebase from './firebase'
 import { Table ,Typography} from 'antd';
 import { Image } from 'antd';
 
-  
 const { Text } = Typography;
 const columns = [
   {
@@ -45,7 +44,7 @@ const columns = [
   {
     title: 'id',
     dataIndex: 'id',
-    sorter: (a, b) => a.description.length - b.description.length,
+    sorter: (a, b) => a.id.length - b.id.length,
     sortDirections: ['descend', 'ascend'],  
   },
 ];
@@ -59,15 +58,10 @@ function Product() {
     const fetchData = async () => {
       const db = firebase.firestore()
       const data = await db.collection("Products").get()
-     // setSpells(data.docs.map(doc => doc.data()))
       setSpells(data.docs.map(doc => ({ ...doc.data(),id: doc.id})))    
     }
     fetchData()
   } , [] )
-
-//const [userDetails, setUserDetails] = useState('')
-//db.collection('users').doc(id).get()
-        //.then(snapshot => setUserDetails(snapshot.data()))
 
   const OnAdd = () => 
   {
@@ -89,8 +83,8 @@ return(
     return {
       onClick: event => {
         //console.log(record.ProductCode)
-        //const db = firebase.firestore()
-        //db.collection("Products").doc(record.ProductCode).delete()
+        const db = firebase.firestore()
+        db.collection("Products").doc(record.id).delete()
         //console.log(" spells.ProductCode  = "+record.ProductCode)        
         
         //console.log(record);

@@ -20,7 +20,10 @@ function Page404() {
     />
     
     <Title level={2}>Welcome To Homayoun Store</Title>
-    <Button href="/BuyNow" type="primary" >Start shopping</Button>   
+    <Button href="/BuyNow" type="primary" >Start shopping</Button>
+    <br/>
+    <br/>
+    <Button href="/Product">Shopping Cart</Button>          
 
     </div>
   )};
