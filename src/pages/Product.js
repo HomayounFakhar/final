@@ -2,8 +2,9 @@ import React from 'react';
 import axios from 'axios'
 import firebase from './firebase'
 
-import { Table ,Typography} from 'antd';
+import { Table ,Typography , Space , Button} from 'antd';
 import { Image } from 'antd';
+
 
 const { Text } = Typography;
 const columns = [
@@ -16,6 +17,11 @@ const columns = [
     render: text => <Text type="warning">{text}</Text>,
     
   },
+  {
+    title : 'Action' ,
+    dataIndex : 'Action' ,
+    render: button => <Button>Delete</Button>       
+ },  
   {
     title: 'Product Name',
     dataIndex: 'ProductName',
@@ -47,30 +53,34 @@ const columns = [
     sorter: (a, b) => a.id.length - b.id.length,
     sortDirections: ['descend', 'ascend'],  
   },
+
 ];
 
 
 // Get Data From Firebase 
 function Product() {
+
+
+
   const [spells, setSpells] = React.useState([])
   
   React.useEffect(() => {
     const fetchData = async () => {
       const db = firebase.firestore()
-      const data = await db.collection("Products").get()
+      const data = await db.collection("Products").where("Price", "<", "000").get()
       setSpells(data.docs.map(doc => ({ ...doc.data(),id: doc.id})))    
     }
     fetchData()
   } , [] )
-
+ 
   const OnAdd = () => 
   {
   firebase.firestore().collection("Products").add ({
     ProductCode : 4 ,
     ProductName : "Shoe",
     OldPrice : 4000 ,
-    Price : 2500 , 
-    Description : "Aldo For men------"
+    Price : 9500 , 
+    Description : "NEW"
   })
   }
 
@@ -82,16 +92,10 @@ return(
    onRow={(record, rowIndex) => {
     return {
       onClick: event => {
-        //console.log(record.ProductCode)
-        const db = firebase.firestore()
-        db.collection("Products").doc(record.id).delete()
-        //console.log(" spells.ProductCode  = "+record.ProductCode)        
         
-        //console.log(record);
-        console.log(spells);        
-
-        //console.log(spells)            
-        //console.log("Delete")           
+        //firebase.firestore().collection("Products").doc(record.id).delete()
+       // console.log(spells);        
+         
       }, // click row
 
       onDoubleClick: event => {
