@@ -1,5 +1,5 @@
 import React , { useState } from 'react';
-import { Table ,Typography  , Divider , Layout ,Space,Card } from 'antd';
+import { Table ,Typography  , Divider , Layout ,Space,Card ,Button} from 'antd';
 import { Image } from 'antd';
 import Online from './../img/Online.png'
   
@@ -85,23 +85,26 @@ function BuyNow() {
     <div>
 
         <Divider orientation="left">{ProductName}</Divider>
+        <Button type="primary">Add To Shopping Cart</Button>                                       
           <Space>
 
-        <Card title="Card" style={{ width: 300 }}> 
-          <Image width={200} src={Online} />                 
+        <Card title="Click on img to see larger !" style={{ width: 300 }}> 
+          <Image width={150} src={Online} />  
+
          </Card>       
 
-         <Card title="Card" style={{ width: 300 }}>
+         <Card title="Over View" style={{ width: 300 }}>
           <p>Card content</p>
           <p>Card content</p>
           <p>Card content</p>          
+          <p>Card content</p>                                     
          </Card>              
 
-
-         <Card title="Card" style={{ width: 300 }}>
+         <Card title="Detail ..." style={{ width: 300 }}>
           <p>Card content</p>
           <p>Card content</p>
-          <p>Card content</p>          
+          <p>Card content</p>   
+          <p>Card content</p>                     
          </Card>                                    
   </Space>
 
