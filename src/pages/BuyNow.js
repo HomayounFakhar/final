@@ -12,7 +12,7 @@ const columns = [
    
     title: 'Product Code',
     dataIndex: 'ProductCode',
-    sorter: (a, b) => a.productcode - b.productcode,
+    sorter: (a, b) => a.ProductCode - b.ProductCode,
     sortDirections: ['descend', 'ascend'],
     render: text => <Text type="warning">{text}</Text>,
     
@@ -20,7 +20,7 @@ const columns = [
   {
     title: 'Product Name',
     dataIndex: 'ProductName',
-    sorter: (a, b) => a.productName.length - b.productName.length,
+    sorter: (a, b) => a.ProductName.length - b.ProductName.length,
     sortDirections: ['descend', 'ascend'],
   },   
   {
@@ -33,28 +33,33 @@ const columns = [
     title: 'Old Price',
     dataIndex: 'OldPrice',
     defaultSortOrder: 'descend',
-    sorter: (a, b) => a.Price - b.Price,
+    sorter: (a, b) => a.OldPrice - b.OldPrice,
     render: text => <Text delete>{text}</Text>,      
   },       
   {
     title: 'Description',
     dataIndex: 'Description',
-    sorter: (a, b) => a.description.length - b.description.length,
+    sorter: (a, b) => a.Description.length - b.Description.length,
     sortDirections: ['descend', 'ascend'],  
   },
   {
-    title: 'id',
+    title: 'WebStore Code',
     dataIndex: 'id',
-    sorter: (a, b) => a.id.length - b.id.length,
     sortDirections: ['descend', 'ascend'],  
+    visibleMenuSettings: false,
+
   },
 
 ];
 
-
-  
 function BuyNow() {
-  const [ProductName , SetProductName] = useState("----");  
+  const [ProductName , SetProductName] = useState("");  
+  const [ProductCode , SetProductCode] = useState("");  
+  const [OldPrice , SetOldPrice] = useState("");  
+  const [Price , SetPrice] = useState("");  
+  const [Description , SetPDescription] = useState("");  
+  const [Group , SetGroup] = useState("");  
+  const [SizeAvailabliy , SetSizeAvailabliy] = useState("");                
 
   // Get Data From Firebase 
   const [Product, setProduct] = React.useState([])
@@ -66,7 +71,6 @@ function BuyNow() {
     fetchData()
   } , [] )
 
- 
  // SetProductName("event.item.props.names");    
   return (
     <div>
@@ -81,21 +85,18 @@ function BuyNow() {
          </Card>       
 
          <Card title="Over View" style={{ width: 300 }}>
-          <p>Card content</p>
-          <p>Card content</p>
-          <p>Card content</p>          
-          <p>Card content</p>                                     
+          <p>ProductCode : {ProductCode}</p>
+          <p>OldPrice : {OldPrice}</p>
+          <p>Price : {Price} </p>          
+          <p>You Save : {Price-OldPrice}</p>                                     
          </Card>              
 
          <Card title="Detail ..." style={{ width: 300 }}>
-          <p>Card content</p>
-          <p>Card content</p>
-          <p>Card content</p>   
-          <p>Card content</p>                     
+          <p>Group : {Group}</p>
+          <p>Size : {SizeAvailabliy}</p>
+          <p>Description : {Description}</p>                     
          </Card>                                    
   </Space>
-
-           
 
     <Divider>Click on your product to see more deatil</Divider>
 
@@ -105,6 +106,14 @@ function BuyNow() {
     return {
       onClick: event => {
         SetProductName(record.ProductName);   
+        SetProductCode(record.ProductCode);           
+        SetOldPrice(record.OldPrice);                   
+        SetPrice(record.Price);      
+        SetPDescription(record.Description);      
+      
+        SetGroup(record.Group);      
+        SetSizeAvailabliy(record.SizeAvailabliy);                                              
+        
         console.log(record.ProductName);
       }, // click row
 

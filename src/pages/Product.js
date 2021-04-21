@@ -13,7 +13,7 @@ const columns = [
    
     title: 'Product Code',
     dataIndex: 'ProductCode',
-    sorter: (a, b) => a.productcode - b.productcode,
+    sorter: (a, b) => a.ProductCode - b.ProductCode,
     sortDirections: ['descend', 'ascend'],
     render: text => <Text type="warning">{text}</Text>,
     
@@ -21,7 +21,7 @@ const columns = [
   {
     title: 'Product Name',
     dataIndex: 'ProductName',
-    sorter: (a, b) => a.productName.length - b.productName.length,
+    sorter: (a, b) => a.ProductName.length - b.ProductName.length,
     sortDirections: ['descend', 'ascend'],
   },   
   {
@@ -34,13 +34,13 @@ const columns = [
     title: 'Old Price',
     dataIndex: 'OldPrice',
     defaultSortOrder: 'descend',
-    sorter: (a, b) => a.Price - b.Price,
+    sorter: (a, b) => a.OldPrice - b.OldPrice,
     render: text => <Text delete>{text}</Text>,      
   },       
   {
     title: 'Description',
     dataIndex: 'Description',
-    sorter: (a, b) => a.description.length - b.description.length,
+    sorter: (a, b) => a.Description.length - b.Description.length,
     sortDirections: ['descend', 'ascend'],  
   },
   {
@@ -82,6 +82,20 @@ function Product() {
   })
   }
 
+  const OnAdd2 = () => 
+  {
+  firebase.firestore().collection("Products").add ({
+    ProductCode : 5 ,
+    ProductName : "Dior perfume",
+    Price : 650 ,     
+    OldPrice : 600 ,
+    Description : "This perfume is used by women" ,   
+    Group : "perfume" ,
+    Utilized : "women" ,
+    SizeAvailabliy : "25ml 50ml 100ml" ,
+  })
+  }
+
 return(
 
   <>   
@@ -109,6 +123,7 @@ return(
   pagination={{ pageSize: 5 }}/>
 
 <button onClick={OnAdd}>OnAdd</button>
+<button onClick={OnAdd2}>OnAdd2</button>
   </>
     
   );
