@@ -53,20 +53,21 @@ const columns = [
 ];
 
 
-// Get Data From Firebase 
+
 function Product() {
 
-  const [spells, setSpells] = React.useState([])
-
+  // Get Data From Firebase 
+  const [Product, setProduct] = React.useState([])
   React.useEffect(() => {
-    const fetchData = async () => {
-      const db = firebase.firestore()
-      const data = await db.collection("Products").where("Price", ">", 0).get()
-      setSpells(data.docs.map(doc => ({ ...doc.data(),id: doc.id})))    
+     const fetchData = async () => {
+        const data = await firebase.firestore().collection("Products").where("Price", ">", 0).get()
+        setProduct(data.docs.map(doc => ({ ...doc.data(),id: doc.id})))    
     }
     fetchData()
   } , [] )
+  // ------------------------------------
  
+  // Add To Database
   const OnAdd = () => 
   {
   firebase.firestore().collection("Products").add ({
@@ -88,7 +89,7 @@ return(
   <Button href="/Product" type="primary">Refresh</Button>
 
   <Divider orientation="left">Double Click To remove from your cart</Divider>    
-  <Table columns={columns} dataSource={spells}
+  <Table columns={columns} dataSource={Product}
    onRow={(record, rowIndex) => {
     return {
       onClick: event => {
