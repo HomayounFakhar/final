@@ -3,7 +3,7 @@ import { Typography ,Button , Image} from 'antd';
 import page404 from './../img/404.png'
 
 const { Title}  = Typography;
-
+//<Button href="/" type="primary">Go To  HomePage</Button>
 function Page404() {
 
   return (
@@ -12,6 +12,7 @@ function Page404() {
          <Title level={2}>Page Not Found</Title>
          <br></br>
          <Button href="/" type="primary">Go To  HomePage</Button>
+
     </div>
   )};
 

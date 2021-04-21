@@ -2,7 +2,8 @@ import React from 'react';
 import axios from 'axios'
 import firebase from './firebase'
 
-import { Table ,Typography , Space , Button} from 'antd';
+import { Table ,Typography , Space , Button , Divider} from 'antd';
+
 import { Image } from 'antd';
 
 
@@ -18,15 +19,16 @@ const columns = [
     
   },
   {
-    title : 'Action' ,
-    dataIndex : 'Action' ,
-    render: button => <Button>Delete</Button>       
- },  
-  {
     title: 'Product Name',
     dataIndex: 'ProductName',
     sorter: (a, b) => a.productName.length - b.productName.length,
     sortDirections: ['descend', 'ascend'],
+  },   
+  {
+    title: 'Price',
+    dataIndex: 'Price',
+    defaultSortOrder: 'descend',
+    sorter: (a, b) => a.Price - b.Price,
   },
   {
     title: 'Old Price',
@@ -34,13 +36,7 @@ const columns = [
     defaultSortOrder: 'descend',
     sorter: (a, b) => a.Price - b.Price,
     render: text => <Text delete>{text}</Text>,      
-  },        
-  {
-    title: 'Price',
-    dataIndex: 'Price',
-    defaultSortOrder: 'descend',
-    sorter: (a, b) => a.Price - b.Price,
-  },
+  },       
   {
     title: 'Description',
     dataIndex: 'Description',
@@ -60,14 +56,12 @@ const columns = [
 // Get Data From Firebase 
 function Product() {
 
-
-
   const [spells, setSpells] = React.useState([])
-  
+
   React.useEffect(() => {
     const fetchData = async () => {
       const db = firebase.firestore()
-      const data = await db.collection("Products").where("Price", "<", "000").get()
+      const data = await db.collection("Products").where("Price", ">", 0).get()
       setSpells(data.docs.map(doc => ({ ...doc.data(),id: doc.id})))    
     }
     fetchData()
@@ -77,28 +71,29 @@ function Product() {
   {
   firebase.firestore().collection("Products").add ({
     ProductCode : 4 ,
-    ProductName : "Shoe",
+    ProductName : "Aldo Men Shoe",
+    Price : 9500 ,     
     OldPrice : 4000 ,
-    Price : 9500 , 
+    Description : "This Shoes can be used in winter and summer Made in Canada" ,   
     Group : "Shoes" ,
-    MadeIN : "NEW" ,
-    SizeAvailabliy : "NEW" ,
-    Description : "This Shoes can be used in winter and summer" 
+    Utilized : "Men" ,
+    SizeAvailabliy : "L / XL / M" ,
   })
   }
 
 return(
+
+  <>   
   
-  <> 
-  <button onClick={OnAdd}>OnAdd</button>
+  <Button href="/Product" type="primary">Refresh</Button>
+
+  <Divider orientation="left">Double Click To remove from your cart</Divider>    
   <Table columns={columns} dataSource={spells}
    onRow={(record, rowIndex) => {
     return {
       onClick: event => {
+        firebase.firestore().collection("Products").doc(record.id).delete()
         
-        //firebase.firestore().collection("Products").doc(record.id).delete()
-       // console.log(spells);        
-         
       }, // click row
 
       onDoubleClick: event => {
@@ -110,7 +105,9 @@ return(
     };
   }}
 
-  />
+  pagination={{ pageSize: 5 }}/>
+
+<button onClick={OnAdd}>OnAdd</button>
   </>
     
   );
