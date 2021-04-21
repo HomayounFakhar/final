@@ -19,11 +19,11 @@ function Page404() {
       src={Online}
     />
     
-    <Title level={2}>Welcome To Homayoun Store</Title>
+    <Title level={2}>Welcome To Web Store !</Title>
     <Button href="/BuyNow" type="primary" >Start shopping</Button>
     <br/>
     <br/>
-    <Button href="/Product">Shopping Cart</Button>          
+    <Button href="/Product" type="primary" >Shopping Cart</Button>          
 
     </div>
   )};

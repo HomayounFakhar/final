@@ -80,7 +80,10 @@ function Product() {
     ProductName : "Shoe",
     OldPrice : 4000 ,
     Price : 9500 , 
-    Description : "NEW"
+    Group : "Shoes" ,
+    MadeIN : "NEW" ,
+    SizeAvailabliy : "NEW" ,
+    Description : "This Shoes can be used in winter and summer" 
   })
   }
 

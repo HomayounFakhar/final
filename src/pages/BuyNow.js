@@ -1,11 +1,10 @@
-import React from 'react';
-import { Table ,Typography} from 'antd';
+import React , { useState } from 'react';
+import { Table ,Typography  , Divider , Layout ,Space,Card } from 'antd';
 import { Image } from 'antd';
 import Online from './../img/Online.png'
   
 const { Text } = Typography;
-
-
+const { Header, Footer, Sider, Content } = Layout;
 
 const columns = [
     {
@@ -80,27 +79,53 @@ const columns = [
   ];
   
 function BuyNow() {
-
+  const [ProductName , SetProductName] = useState("----");  
+ // SetProductName("event.item.props.names");    
   return (
     <div>
-    
-    <Image width={200} src={Online} />
 
-    <Table columns={columns} dataSource={data}      
-    onRow={(record, rowIndex) => {
-      return {
-        onClick: event => {
-          console.log(record)
-        }, // click row
+        <Divider orientation="left">{ProductName}</Divider>
+          <Space>
 
-        onDoubleClick: event => {}, // double click row
-        onContextMenu: event => {}, // right button click row
-        onMouseEnter: event => {}, // mouse enter row
-        onMouseLeave: event => {}, // mouse leave row
-      };
-    }}
+        <Card title="Card" style={{ width: 300 }}> 
+          <Image width={200} src={Online} />                 
+         </Card>       
 
-    />
+         <Card title="Card" style={{ width: 300 }}>
+          <p>Card content</p>
+          <p>Card content</p>
+          <p>Card content</p>          
+         </Card>              
+
+
+         <Card title="Card" style={{ width: 300 }}>
+          <p>Card content</p>
+          <p>Card content</p>
+          <p>Card content</p>          
+         </Card>                                    
+  </Space>
+
+           
+
+    <Divider>Click on your product to see more deatil</Divider>
+        <Table columns={columns} dataSource={data}      
+        onRow={(record, rowIndex) => {
+          return {
+            onClick: event => {
+              SetProductName(record.productName);   
+              console.log(record.productName)
+            }, // click row
+
+            onDoubleClick: event => {}, // double click row
+            onContextMenu: event => {}, // right button click row
+            onMouseEnter: event => {}, // mouse enter row
+            onMouseLeave: event => {}, // mouse leave row
+          };
+        }}
+        />
+
+
+
     </div>
   )};
 
