@@ -10,7 +10,6 @@ const { Title}  = Typography;
 
 function Page404() {
 
-
   return (
     <>
          <Image

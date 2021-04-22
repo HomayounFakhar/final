@@ -1,5 +1,5 @@
 import React , { useState , useContext} from 'react';
-import {Image, Table ,Typography  , Divider , Layout ,Space,Card ,Button} from 'antd';
+import {Input, Image, Table ,Typography  , Divider , Layout ,Space,Card ,Button} from 'antd';
 import firebase from './firebase'
 import { Context } from '../context/Storage'
 
@@ -73,6 +73,7 @@ function BuyNow() {
  })
  }
 
+  // Showing Data
   const [ProductName , SetProductName] = useState("");  
   const [ProductCode , SetProductCode] = useState("");  
   const [OldPrice , SetOldPrice] = useState("");  
@@ -81,22 +82,37 @@ function BuyNow() {
   const [Group , SetGroup] = useState("");  
   const [SizeAvailabliy , SetSizeAvailabliy] = useState("");                
 
+  // Filtering Data
+  const [ItemFilter , SetItemFilter] = useState("Price");    
+
+  const [MinPrice , SetMinPrice] = useState(0);    
+  const [MaxPrice , SetMaxPrice] = useState(10000000);    
+  
+  function Filtring () {
+    
+     console.log("1212")
+    };  
+  
+
+  ////
+
   // Get Data From Firebase
   const [Product, setProduct] = React.useState([])
   React.useEffect(() => {
      const fetchData = async () => {
-        const data = await firebase.firestore().collection("Products").where("Price", ">", 0).get()
+        const data = await firebase.firestore().collection("Products").where(ItemFilter, "<=", MaxPrice).where(ItemFilter, ">=", MinPrice).get()
         setProduct(data.docs.map(doc => ({ ...doc.data(),id: doc.id})))    
     }
     fetchData()
   } , [] )
   
   return (
-    <div>
+    <>
   <h1>You are login as : {state.Username}</h1>
   <br></br>
         <Divider orientation="left">{ProductName}</Divider>
-        <Button onClick={OnAdd} type="primary">Add To Shopping Cart</Button>                                       
+        <Button onClick={OnAdd} type="primary">Add To Shopping Cart</Button>  
+                                          
           <Space>
 
         <Card title="Click on img to see larger !" style={{ width: 300 }}> 
@@ -147,8 +163,16 @@ function BuyNow() {
 
   pagination={{ pageSize: 5 }}/>
 
+<Card title="Filter by Price" style={{ width: 300 }}> 
+          
+          <Input onChange={event => SetMinPrice(event.target.value)} />  
+          <Divider>To</Divider>
+          <Input/>     
+          <Divider></Divider>               
+          <Button onChange={event => SetMaxPrice(event.target.value)} href="/BuyNow" type="primary">Filter</Button>           
+         </Card>  
 
-    </div>
+    </>
   )};
 
   export default BuyNow;
