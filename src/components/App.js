@@ -6,10 +6,9 @@ import MainPage from './../pages/MainPage';
 import Product from './../pages/Product';
 import firebase from '../pages/firebase';
 
-
 //
 import AboutMe from './../pages/AboutMe'
-import Store from './../context/Storage'
+import Storage from './../context/Storage'
 //
 
 import {
@@ -26,7 +25,6 @@ import { useState } from 'react';
 const { Text ,Title}  = Typography;
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
-
 
 function App() {
   const [DisNone , SetDisNone] = useState("DisNone");  
@@ -53,9 +51,7 @@ return(
 
   <Router>
    
-   <Store>
-   
-
+   <Storage>
    <Layout>
     <Header class="header">
 
@@ -70,8 +66,8 @@ return(
         <Menu.Item onClick={RouteName} key="3" names ="Contact Us">{itemT}
         <Link to="/ContactUs"></Link>
         </Menu.Item>
-        <Menu.Item onClick={RouteName} key="4" names ="About Us">{itemC}
-        <Link to="/AboutUs"></Link>
+        <Menu.Item onClick={RouteName} key="4" names ="About Me">{itemC}
+        <Link to="/AboutMe"></Link>
         </Menu.Item>        
 
       </Menu>
@@ -135,7 +131,7 @@ return(
     </Layout>
   </Layout>
 
-  </Store> 
+  </Storage> 
   </Router>
 
   )};

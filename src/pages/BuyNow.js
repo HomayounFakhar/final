@@ -1,9 +1,9 @@
 import React , { useState } from 'react';
 import { Table ,Typography  , Divider , Layout ,Space,Card ,Button} from 'antd';
 import { Image } from 'antd';
-import Online from './../img/Online.png'
+import Img1 from './../img/Online.png'
 import firebase from './firebase'
-  
+
 const { Text } = Typography;
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -53,6 +53,7 @@ const columns = [
 ];
 
 function BuyNow() {
+
   const [ProductName , SetProductName] = useState("");  
   const [ProductCode , SetProductCode] = useState("");  
   const [OldPrice , SetOldPrice] = useState("");  
@@ -61,7 +62,7 @@ function BuyNow() {
   const [Group , SetGroup] = useState("");  
   const [SizeAvailabliy , SetSizeAvailabliy] = useState("");                
 
-  // Get Data From Firebase 
+  // Get Data From Firebase
   const [Product, setProduct] = React.useState([])
   React.useEffect(() => {
      const fetchData = async () => {
@@ -70,8 +71,7 @@ function BuyNow() {
     }
     fetchData()
   } , [] )
-
- // SetProductName("event.item.props.names");    
+  
   return (
     <div>
 
@@ -80,8 +80,8 @@ function BuyNow() {
           <Space>
 
         <Card title="Click on img to see larger !" style={{ width: 300 }}> 
-          <Image width={150} src={Online} />  
-
+          <Image width={150} src={"http://sarafan.today/img/"+ProductCode+".png"} />  
+          
          </Card>       
 
          <Card title="Over View" style={{ width: 300 }}>
@@ -105,16 +105,15 @@ function BuyNow() {
    onRow={(record, rowIndex) => {
     return {
       onClick: event => {
-        SetProductName(record.ProductName);   
-        SetProductCode(record.ProductCode);           
-        SetOldPrice(record.OldPrice);                   
-        SetPrice(record.Price);      
-        SetPDescription(record.Description);      
-      
-        SetGroup(record.Group);      
-        SetSizeAvailabliy(record.SizeAvailabliy);                                              
-        
-        console.log(record.ProductName);
+              SetProductName(record.ProductName);   
+              SetProductCode(record.ProductCode);           
+              SetOldPrice(record.OldPrice);                   
+              SetPrice(record.Price);      
+              SetPDescription(record.Description);      
+              SetGroup(record.Group);      
+              SetSizeAvailabliy(record.SizeAvailabliy);   
+
+              console.log(record.ProductName);
       }, // click row
 
       onDoubleClick: event => {
