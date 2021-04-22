@@ -60,13 +60,13 @@ return(
         <Menu.Item href="/Product" type="primary" onClick={RouteName} key="1" names ="BuyNow !">{itemF}
         <Link to="/BuyNow"></Link>
         </Menu.Item> 
-        <Menu.Item onClick={RouteName} key="2" names ="Shopping Cart">{itemS} 
+        <Menu.Item onClick={RouteName} names ="Shopping Cart">{itemS} 
         <Link to="/Product"></Link>
         </Menu.Item>
-        <Menu.Item onClick={RouteName} key="3" names ="Contact Us">{itemT}
+        <Menu.Item onClick={RouteName} names ="Contact Us">{itemT}
         <Link to="/ContactUs"></Link>
         </Menu.Item>
-        <Menu.Item onClick={RouteName} key="4" names ="About Me">{itemC}
+        <Menu.Item onClick={RouteName} names ="About Me">{itemC}
         <Link to="/AboutMe"></Link>
         </Menu.Item>        
 
@@ -82,24 +82,17 @@ return(
           defaultOpenKeys={['sub1']}
           style={{ height: '100%', borderRight: 0 }}
         >
-          <SubMenu key="sub1" icon={<UserOutlined />} title="Shoe">
-            <Menu.Item key="1">option1</Menu.Item>
-            <Menu.Item key="2">option2</Menu.Item>
-            <Menu.Item key="3">option3</Menu.Item>
-            <Menu.Item key="4">option4</Menu.Item>
+          <SubMenu key="Sub1" icon={<UserOutlined />} title="My Favorite List">
+            <Menu.Item key="1">Product Name 1</Menu.Item>
+            <Menu.Item key="2">Product Name 2</Menu.Item>
+            <Menu.Item key="3">Product Name 3</Menu.Item>
+            <Menu.Item key="4">Product Name 4</Menu.Item>
           </SubMenu>
-          <SubMenu key="sub2" icon={<LaptopOutlined />} title="T-Shirt">
-            <Menu.Item key="5">option5</Menu.Item>
-            <Menu.Item key="6">option6</Menu.Item>
-            <Menu.Item key="7">option7</Menu.Item>
-            <Menu.Item key="8">option8</Menu.Item>
+          <SubMenu key="sub2" icon={<NotificationOutlined />} title="News">
+            <Menu.Item key="5">Sale Is Comming !</Menu.Item>
+            <Menu.Item key="6">Hire in Our Web Store</Menu.Item>
           </SubMenu>
-          <SubMenu key="sub3" icon={<NotificationOutlined />} title="jewelry">
-            <Menu.Item key="9">option9</Menu.Item>
-            <Menu.Item key="10">option10</Menu.Item>
-            <Menu.Item key="11">option11</Menu.Item>
-            <Menu.Item key="12">option12</Menu.Item>
-          </SubMenu>
+
         </Menu>
       </Sider>
       <Layout style={{ padding: '0 24px 24px' }}>

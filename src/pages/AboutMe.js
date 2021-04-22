@@ -8,14 +8,15 @@ const AboutMe = () => {
 
    const [state, setState] = useContext(Context);
     
+   ///
    const initalState = {
-    name : 'Change Global Variable',
+    Username : 'Homayoun',
     passworld: '12345'
-    };   
-
+    };
    function test () {
     console.log("------");
     setState(initalState);
+    ////
 
 }
 
@@ -23,7 +24,7 @@ const AboutMe = () => {
     <>
          <button onClick={test}  >mmmmmmmmmmmmmmmmmm</button>
         <h1 >Welcome</h1>
-        <p>{state.name}</p>
+        <p>{state.Username}</p>
         <p>{state.passworld}</p> 
        
     </>

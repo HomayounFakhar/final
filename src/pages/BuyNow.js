@@ -57,14 +57,15 @@ function BuyNow() {
  // Add To ShoppingCart
  const OnAdd = () => 
  {
+
  firebase.firestore().collection("ShoppingCart").add ({
-   ProductCode : {ProductCode} ,
-   ProductName : {ProductName},
-   Price : {Price},     
-   OldPrice : {OldPrice},
-   Description : {Description},  
-   Group : {Group},
-   SizeAvailabliy : {SizeAvailabliy} ,
+   ProductCode : ProductCode ,
+   ProductName : ProductName,
+   Price : Price,     
+   OldPrice : OldPrice,
+   Description : Description,  
+   Group : Group,
+   SizeAvailabliy : SizeAvailabliy,
    UserName : "Homayoun"
  })
  }
@@ -91,7 +92,7 @@ function BuyNow() {
     <div>
 
         <Divider orientation="left">{ProductName}</Divider>
-        <Button type="primary">Add To Shopping Cart</Button>                                       
+        <Button onClick={OnAdd} type="primary">Add To Shopping Cart</Button>                                       
           <Space>
 
         <Card title="Click on img to see larger !" style={{ width: 300 }}> 

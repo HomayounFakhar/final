@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const initalState = {
-name : 'Homayoun',
+Username : 'NotLogin',
 passworld: '12345'
 };
 
