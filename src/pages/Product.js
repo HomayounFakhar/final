@@ -73,15 +73,15 @@ function Product() {
   // Add To Database
   const OnAdd = () => 
   {
-  firebase.firestore().collection("ShoppingProducts").add ({
-    ProductCode : 4 ,
-    ProductName : "Aldo Men Shoe",
-    Price : 9500 ,     
-    OldPrice : 4000 ,
-    Description : "This Shoes can be used in winter and summer Made in Canada" ,   
-    Group : "Shoes" ,
+  firebase.firestore().collection("Products").add ({
+    ProductCode : 21 ,
+    ProductName : "Sea HAT",
+    Price : 89 ,     
+    OldPrice : 99 ,
+    Description : "Cowboy HAT Made in Italy" ,   
+    Group : "HAT" ,
     Utilized : "Men" ,
-    SizeAvailabliy : "L / XL / M" ,
+    SizeAvailabliy : "40 cm" ,
   })
   }
 

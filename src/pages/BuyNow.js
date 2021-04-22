@@ -54,6 +54,21 @@ const columns = [
 
 function BuyNow() {
 
+ // Add To ShoppingCart
+ const OnAdd = () => 
+ {
+ firebase.firestore().collection("ShoppingCart").add ({
+   ProductCode : {ProductCode} ,
+   ProductName : {ProductName},
+   Price : {Price},     
+   OldPrice : {OldPrice},
+   Description : {Description},  
+   Group : {Group},
+   SizeAvailabliy : {SizeAvailabliy} ,
+   UserName : "Homayoun"
+ })
+ }
+
   const [ProductName , SetProductName] = useState("");  
   const [ProductCode , SetProductCode] = useState("");  
   const [OldPrice , SetOldPrice] = useState("");  
