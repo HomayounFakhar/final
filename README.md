@@ -6,9 +6,6 @@ Sample of WebStore
 Include Routing , Global Variable , UseState and ... 
 Design by "ant.design"
 
-Developer :
-Homayoun Fakhar
-
 
 How to install ant.design
 https://ant.design/docs/react/use-with-create-react-app
@@ -26,3 +23,7 @@ Optional
 npm install prop-types
 
 
+
+
+Developer :
+Homayoun Fakhar
