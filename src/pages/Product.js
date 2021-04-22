@@ -1,11 +1,15 @@
 import React from 'react';
 import axios from 'axios'
 import firebase from './firebase'
-
 import { Table ,Typography , Space , Button , Divider} from 'antd';
-
 import { Image } from 'antd';
-
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link ,
+  useParams 
+} from "react-router-dom";
 
 const { Text } = Typography;
 const columns = [
@@ -53,7 +57,6 @@ const columns = [
 ];
 
 
-
 function Product() {
 
   // Get Data From Firebase 
@@ -70,7 +73,7 @@ function Product() {
   // Add To Database
   const OnAdd = () => 
   {
-  firebase.firestore().collection("Products").add ({
+  firebase.firestore().collection("ShoppingProducts").add ({
     ProductCode : 4 ,
     ProductName : "Aldo Men Shoe",
     Price : 9500 ,     
@@ -101,7 +104,7 @@ return(
   <>   
   
   <Button href="/Product" type="primary">Refresh</Button>
-
+  
   <Divider orientation="left">Double Click To remove from your cart</Divider>    
   <Table columns={columns} dataSource={Product}
    onRow={(record, rowIndex) => {

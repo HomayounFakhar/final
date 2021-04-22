@@ -4,9 +4,13 @@ import BuyNow from './../pages/BuyNow';
 import Page404 from './../pages/Page404';
 import MainPage from './../pages/MainPage';
 import Product from './../pages/Product';
-
 import firebase from '../pages/firebase';
 
+
+//
+import AboutMe from './../pages/AboutMe'
+import Store from './../context/Storage'
+//
 
 import {
   BrowserRouter as Router,
@@ -44,9 +48,14 @@ function App() {
 }
 
 return(
-  <Router>
 
+
+
+  <Router>
    
+   <Store>
+   
+
    <Layout>
     <Header class="header">
 
@@ -114,7 +123,9 @@ return(
         <Switch>
         <Route exact path="/" component={MainPage} />                  
           <Route path="/BuyNow" component={BuyNow} />
-          <Route path="/Product" component={Product} />          
+          <Route path="/AboutMe" component={AboutMe} />          
+          <Route exact path="/Product" component={Product} />          
+   
           <Route path="*" component={Page404} />
 					 
 				</Switch>
@@ -124,7 +135,7 @@ return(
     </Layout>
   </Layout>
 
-
+  </Store> 
   </Router>
 
   )};
