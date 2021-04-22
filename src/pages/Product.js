@@ -63,42 +63,13 @@ function Product() {
   const [Product, setProduct] = React.useState([])
   React.useEffect(() => {
      const fetchData = async () => {
-        const data = await firebase.firestore().collection("Products").where("Price", ">", 0).get()
+        const data = await firebase.firestore().collection("ShoppingCart").where("Price", ">", 0).get()
         setProduct(data.docs.map(doc => ({ ...doc.data(),id: doc.id})))    
     }
     fetchData()
   } , [] )
   // ------------------------------------
  
-  // Add To Database
-  const OnAdd = () => 
-  {
-  firebase.firestore().collection("Products").add ({
-    ProductCode : 21 ,
-    ProductName : "Sea HAT",
-    Price : 89 ,     
-    OldPrice : 99 ,
-    Description : "Cowboy HAT Made in Italy" ,   
-    Group : "HAT" ,
-    Utilized : "Men" ,
-    SizeAvailabliy : "40 cm" ,
-  })
-  }
-
-  const OnAdd2 = () => 
-  {
-  firebase.firestore().collection("Products").add ({
-    ProductCode : 5 ,
-    ProductName : "Dior perfume",
-    Price : 650 ,     
-    OldPrice : 600 ,
-    Description : "This perfume is used by women" ,   
-    Group : "perfume" ,
-    Utilized : "women" ,
-    SizeAvailabliy : "25ml 50ml 100ml" ,
-  })
-  }
-
 return(
 
   <>   
@@ -110,7 +81,7 @@ return(
    onRow={(record, rowIndex) => {
     return {
       onClick: event => {
-        firebase.firestore().collection("Products").doc(record.id).delete()
+        firebase.firestore().collection("ShoppingCart").doc(record.id).delete()
         
       }, // click row
 
@@ -125,8 +96,6 @@ return(
 
   pagination={{ pageSize: 5 }}/>
 
-<button onClick={OnAdd}>OnAdd</button>
-<button onClick={OnAdd2}>OnAdd2</button>
   </>
     
   );
