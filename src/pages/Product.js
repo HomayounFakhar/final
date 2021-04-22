@@ -1,15 +1,7 @@
-import React from 'react';
-import axios from 'axios'
+import React , { useState , useContext} from 'react';
 import firebase from './firebase'
-import { Table ,Typography , Space , Button , Divider} from 'antd';
-import { Image } from 'antd';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link ,
-  useParams 
-} from "react-router-dom";
+import { Table ,Typography , Button , Divider} from 'antd';
+import { Context } from '../context/Storage'
 
 const { Text } = Typography;
 const columns = [
@@ -59,11 +51,15 @@ const columns = [
 
 function Product() {
 
+ //Global 
+ const [state, setState] = useContext(Context);
+
+
   // Get Data From Firebase 
   const [Product, setProduct] = React.useState([])
   React.useEffect(() => {
      const fetchData = async () => {
-        const data = await firebase.firestore().collection("ShoppingCart").where("Price", ">", 0).get()
+        const data = await firebase.firestore().collection("ShoppingCart").where("UserName", "==", state.Username).get()
         setProduct(data.docs.map(doc => ({ ...doc.data(),id: doc.id})))    
     }
     fetchData()
@@ -73,7 +69,8 @@ function Product() {
 return(
 
   <>   
-  
+  <h1>You are login as : {state.Username}</h1>
+  <br></br>
   <Button href="/Product" type="primary">Refresh</Button>
   
   <Divider orientation="left">Double Click To remove from your cart</Divider>    

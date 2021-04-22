@@ -35,7 +35,8 @@ function App() {
   const [itemF , setFItem] = useState("BuyNow !");  
   const [itemS , setS2Item] = useState("Shopping Cart");  
   const [itemT , setTItem] = useState("Contact Us");    
-  const [itemC , setCItem] = useState("About Us");      
+  const [itemC , setCItem] = useState("About Us");    
+  const [itemL , setitemL] = useState("Login");      
 
   const [count , setcount] = useState("Buy Now !"); 
 
@@ -59,14 +60,16 @@ return(
         </Menu.Item> 
         <Menu.Item onClick={RouteName} names ="Shopping Cart">{itemS} 
         <Link to="/Product"></Link>
-        </Menu.Item>
+        </Menu.Item>      
         <Menu.Item onClick={RouteName} names ="Contact Us">{itemT}
         <Link to="/ContactUs"></Link>
         </Menu.Item>
         <Menu.Item onClick={RouteName} names ="About Me">{itemC}
         <Link to="/AboutMe"></Link>
         </Menu.Item>        
-
+        <Menu.Item onClick={RouteName} names ="Login">{itemL}
+        <Link to="/Login"></Link>
+        </Menu.Item>    
       </Menu>
 
     </Header>
@@ -107,7 +110,7 @@ return(
         >
 
         <Switch>
-        <Route exact path="/" component={MainPage} />                  
+          <Route exact path="/" component={MainPage} />                  
           <Route exact path="/BuyNow" component={BuyNow} />
           <Route exact path="/AboutMe" component={AboutMe} />          
           <Route exact path="/Login" component={Login} />             

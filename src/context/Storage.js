@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 const initalState = {
-Username : 'NotLogin',
-password : '12345'
+Username : '',
+Password : '12345'
 };
 
 export const Context = React.createContext();

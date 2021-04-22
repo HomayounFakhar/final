@@ -1,6 +1,7 @@
-import React , { useState } from 'react';
+import React , { useState , useContext} from 'react';
 import {Image, Table ,Typography  , Divider , Layout ,Space,Card ,Button} from 'antd';
 import firebase from './firebase'
+import { Context } from '../context/Storage'
 
 const { Text } = Typography;
 const { Header, Footer, Sider, Content } = Layout;
@@ -52,6 +53,10 @@ const columns = [
 
 function BuyNow() {
 
+
+ //Global 
+ const [state, setState] = useContext(Context);
+
  // Add To ShoppingCart
  const OnAdd = () => 
  {
@@ -64,7 +69,7 @@ function BuyNow() {
    Description : Description,  
    Group : Group,
    SizeAvailabliy : SizeAvailabliy,
-   UserName : "Homayoun"
+   UserName : state.Username
  })
  }
 
@@ -88,7 +93,8 @@ function BuyNow() {
   
   return (
     <div>
-
+  <h1>You are login as : {state.Username}</h1>
+  <br></br>
         <Divider orientation="left">{ProductName}</Divider>
         <Button onClick={OnAdd} type="primary">Add To Shopping Cart</Button>                                       
           <Space>

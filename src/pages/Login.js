@@ -8,18 +8,17 @@ const Login = () => {
    const [state, setState] = useContext(Context);
     
    const [Username, SetUsername] = useState('')
+   const [Password, Setpassword] = useState('')   
+   
 
-
-   ///
+   /// Change Value Global
    const initalState = {
     Username : Username,
-    passworld: '12345'
+    Password: Password
     };
-    
-    function test () {
-     console.log("------");
+    function ChangeGlobalValues () {
     setState(initalState);
-    ////
+    //////////////////////
 
 }
 
@@ -27,21 +26,14 @@ const Login = () => {
     <>
 
 <Card title="Enter your username to have your own Cart !" style={{ width: 500 }}>
-
-<Input Key="Username" addonBefore="Username " onChange={event => SetUsername(event.target.value)} />
-<Divider></Divider>
-<Input Key="Password" addonBefore="Password  " />
-<Divider></Divider>
-<Button onClick={test} type="primary">Login To Store</Button>    
-
+      <Input Key="Username" addonBefore="Username " defaultValue={state.Username} onChange={event => SetUsername(event.target.value)} />
+          <Divider></Divider> 
+      <Input Key="Password" addonBefore="Password  " onChange={event => Setpassword(event.target.value)} />
+          <Divider></Divider>
+      <Button onClick={ChangeGlobalValues} type="primary">Login To Store</Button>
 </Card>    
-         
-        <h1 >LOGIN LOGIN LOGIN LOGIN LOGIN</h1>
-        <p>{state.Username}</p>
-        <p>{state.passworld}</p> 
-       
+ 
     </>
-
 
   )
 };
