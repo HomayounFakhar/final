@@ -25,5 +25,4 @@ npm install prop-types
 
 Developer :
 Homayoun Fakhar
-
 2021 April
