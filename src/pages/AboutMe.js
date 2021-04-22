@@ -1,9 +1,6 @@
 import React , { useContext, useState } from 'react';
 import { Context } from './../context/Storage'
 
-import {Button} from 'antd';
-
-
 const AboutMe = () => {
 
    const [state, setState] = useContext(Context);
@@ -22,8 +19,8 @@ const AboutMe = () => {
 
     return (
     <>
-         <button onClick={test}  >mmmmmmmmmmmmmmmmmm</button>
-        <h1 >Welcome</h1>
+        <button onClick={test}  >mmmmmmmmmmmmmmmmmm</button>
+        <h1>Welcome</h1>
         <p>{state.Username}</p>
         <p>{state.passworld}</p> 
        

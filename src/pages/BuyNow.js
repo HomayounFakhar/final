@@ -1,7 +1,5 @@
 import React , { useState } from 'react';
-import { Table ,Typography  , Divider , Layout ,Space,Card ,Button} from 'antd';
-import { Image } from 'antd';
-import Img1 from './../img/Online.png'
+import {Image, Table ,Typography  , Divider , Layout ,Space,Card ,Button} from 'antd';
 import firebase from './firebase'
 
 const { Text } = Typography;

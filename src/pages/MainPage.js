@@ -3,11 +3,7 @@ import { Typography ,Button} from 'antd';
 import { Image } from 'antd';
 import Online from './../img/Online.png'
 
-
-
 const { Text ,Title}  = Typography;
-
-
 
 function Page404() {
 

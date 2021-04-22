@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const initalState = {
 Username : 'NotLogin',
-passworld: '12345'
+password : '12345'
 };
 
 export const Context = React.createContext();

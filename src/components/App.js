@@ -4,6 +4,8 @@ import BuyNow from './../pages/BuyNow';
 import Page404 from './../pages/Page404';
 import MainPage from './../pages/MainPage';
 import Product from './../pages/Product';
+import Login from './../pages/Login';
+
 import firebase from '../pages/firebase';
 
 //
@@ -22,12 +24,14 @@ import { Layout, Menu, Breadcrumb, Typography } from 'antd';
 import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 
+
 const { Text ,Title}  = Typography;
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
 function App() {
-  const [DisNone , SetDisNone] = useState("DisNone");  
+    
+  // Menu Items
   const [itemF , setFItem] = useState("BuyNow !");  
   const [itemS , setS2Item] = useState("Shopping Cart");  
   const [itemT , setTItem] = useState("Contact Us");    
@@ -35,19 +39,12 @@ function App() {
 
   const [count , setcount] = useState("Buy Now !"); 
 
+  // Addressing
   function RouteName(event) {
-
-    console.log(event.item.props.names);
     setcount(event.item.props.names);
-
-    if (event.item.props.names == "BuyNow !") {
-       console.log("In IF");
   }
-}
 
 return(
-
-
 
   <Router>
    
@@ -111,10 +108,10 @@ return(
 
         <Switch>
         <Route exact path="/" component={MainPage} />                  
-          <Route path="/BuyNow" component={BuyNow} />
-          <Route path="/AboutMe" component={AboutMe} />          
-          <Route exact path="/Product" component={Product} />          
-   
+          <Route exact path="/BuyNow" component={BuyNow} />
+          <Route exact path="/AboutMe" component={AboutMe} />          
+          <Route exact path="/Login" component={Login} />             
+          <Route path="/Product" component={Product} />          
           <Route path="*" component={Page404} />
 					 
 				</Switch>
