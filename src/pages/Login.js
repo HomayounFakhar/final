@@ -31,6 +31,7 @@ const Login = () => {
           <Divider></Divider> 
       <Input Key="Password" addonBefore="Password  " onChange={event => Setpassword(event.target.value)} />
           <Divider></Divider>
+    
       <Button onClick={ChangeGlobalValues} type="primary">Login To Store</Button>
 </Card>    
  

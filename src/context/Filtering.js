@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 
 // Filtering
 const initalState = {
-Price : '',
+MinPrice : 0,
+MaxPrice : 1000000,
 };
 
 export const ContextFilter = React.createContext();
 
 const Filtering = ({ children }) => {
-    const [Filter,setFilter] = useState(initalState);
+    const [filter,setFilter] = useState(initalState);
      return (
-     <ContextFilter.Provider value={[Filter, setFilter]}>{children}</ContextFilter.Provider>
+     <ContextFilter.Provider value={[filter, setFilter]}>{children}</ContextFilter.Provider>
 );
 };
 

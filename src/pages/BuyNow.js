@@ -57,9 +57,7 @@ function BuyNow() {
 
  //Global 
  const [state, setState] = useContext(Context);
-
- //ContextFiltering - Global
- const [Filter, setFilter] = useContext(ContextFilter); 
+ const [filter, setFilter] = useContext(ContextFilter); 
  
  // Add To ShoppingCart
  const OnAdd = () => 
@@ -86,27 +84,6 @@ function BuyNow() {
   const [Group , SetGroup] = useState("");  
   const [SizeAvailabliy , SetSizeAvailabliy] = useState("");                
 
-  // Filtering Data
-  const [ItemFilter , SetItemFilter] = useState("Price");    
-
-  const [MinPrice , SetMinPrice] = useState(0);    
-  const [MaxPrice , SetMaxPrice] = useState(10000000);    
-  
-  function Filtring () {
-  
-     console.log("1212")
-    };  
-  
-
-    function ChangeFiltering () {
-      const initalState = {
-        Price : "Price" ,
-        };      
-        setFilter(initalState);
-        console.log("ChangeGlobalValues")
-        //////////////////////
-    }
-
     // Gobal Values
     function ChangeGlobalValues () {
       const initalState = {
@@ -120,7 +97,6 @@ function BuyNow() {
         Username : state.Username
         };      
         setState(initalState);
-        console.log("ChangeGlobalValues")
         //////////////////////
     }
     
@@ -130,7 +106,7 @@ function BuyNow() {
     const [Product, setProduct] = React.useState([])
     React.useEffect(() => {
       const fetchData = async () => {
-          const data = await firebase.firestore().collection("Products").where(ItemFilter, "<=", MaxPrice).where(ItemFilter, ">=", MinPrice).get()
+          const data = await firebase.firestore().collection("Products").where("Price", "<", filter.MaxPrice).where("Price", ">", filter.MinPrice).get()
           setProduct(data.docs.map(doc => ({ ...doc.data(),id: doc.id})))    
       }
       fetchData()
@@ -153,7 +129,7 @@ function BuyNow() {
               SetSizeAvailabliy(record.SizeAvailabliy);   
 
               ChangeGlobalValues ()
-              ChangeFiltering ()
+           
       }, // click row
 
       onDoubleClick: event => {
@@ -171,11 +147,11 @@ function BuyNow() {
 
 <Card title="Filter by Price" style={{ width: 300 }}> 
           
-          <Input onChange={event => SetMinPrice(event.target.value)} />  
+          <Input/>
           <Divider>To</Divider>
           <Input/>     
           <Divider></Divider>               
-          <Button onChange={event => SetMaxPrice(event.target.value)} href="/BuyNow" type="primary">Filter</Button>           
+          <Button >Filter</Button>           
          </Card>  
 
     </>
