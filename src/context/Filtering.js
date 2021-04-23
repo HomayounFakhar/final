@@ -3,8 +3,7 @@ import React, { useState } from 'react';
 // Filtering
 const initalState = {
 MinPrice : 0,
-MaxPrice : 100,
-filterProductName : "T-Shirt"
+MaxPrice : 100000
 };
 
 export const ContextFilter = React.createContext();
