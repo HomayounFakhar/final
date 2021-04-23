@@ -6,9 +6,11 @@ import MainPage from './../pages/MainPage';
 import Product from './../pages/Product';
 import Login from './../pages/Login';
 import AboutMe from './../pages/AboutMe'
+import RegisterFilter from './../pages/RegisterFilter'
+
 
 import { Context } from './../context/Storage'
-import { ContextFilter } from '../context/Filtering'
+
 
 import {
   BrowserRouter as Router,
@@ -17,7 +19,7 @@ import {
   Link
 } from "react-router-dom";
 
-import { Layout, Menu, Breadcrumb, Image, Typography,Divider ,Card , Button , Input} from 'antd';
+import { Layout, Menu, Breadcrumb, Image,Divider ,Card , Button , Input} from 'antd';
 import { UserOutlined, NotificationOutlined , SyncOutlined} from '@ant-design/icons';
 
 
@@ -32,7 +34,7 @@ function App() {
   // Menu Items
   const [itemF , setFItem] = useState("BuyNow !");  
   const [itemS , setS2Item] = useState("Shopping Cart");  
-  const [itemT , setTItem] = useState("Control Panel");    
+  const [itemT , setTItem] = useState("RegisterFilter");    
   const [itemC , setCItem] = useState("About Us");    
   const [itemL , setitemL] = useState("Login");      
 
@@ -41,22 +43,6 @@ function App() {
   // Addressing
   function RouteName(event) {
      setcount(event.item.props.names);
-  }
-
- //Filtering
- const [filter, setFilter] = useContext(ContextFilter); 
-
- const [MinPrice , SetMinPrice] = useState();    
- const [MaxPrice , SetMaxPrice] = useState();    
-
-  function ChangeFiltering () {
-    const initalState = {
-      MinPrice : MinPrice,
-      MaxPrice : MaxPrice
-      };      
-      setFilter(initalState);
-      console.log("ChangeGlobalValues")
-      //////////////////////
   }
 
 
@@ -83,8 +69,8 @@ return(
           <Menu.Item onClick={RouteName} names ="Login">{itemL} ({state.Username})
           <Link to="/Login"></Link>
           </Menu.Item>  
-          <Menu.Item onClick={RouteName} names ="Control Panel">{itemT}
-          <Link to="/ContactUs"></Link>
+          <Menu.Item onClick={RouteName} names ="RegisterFilter">{itemT}
+          <Link to="/RegisterFilter"></Link>
           </Menu.Item>
       </Menu>
 
@@ -110,19 +96,6 @@ return(
               <Menu.Item key="5">Sale Is Comming !</Menu.Item>
               <Menu.Item key="6">Hire in Our Web Store</Menu.Item>
           </SubMenu> 
-          <SubMenu key="Sub3" rotate={180} icon={<SyncOutlined />} title="Search">
-          <Card title="" style={{ width: 200 }}> 
-          <p>Min Price</p>
-          <Input onChange={event => SetMinPrice(parseInt(event.target.value))} />
-          <Divider>To</Divider>
-          <Input onChange={event => SetMaxPrice(parseInt(event.target.value))}/>   
-          <Divider>To</Divider>                  
-          <Button onClick={ChangeFiltering}>Click to Filter
-
-          </Button>   
-         </Card>  
-
-          </SubMenu>          
     
           <Divider>Last Visited</Divider>          
    
@@ -167,6 +140,7 @@ return(
           <Route exact path="/AboutMe" component={AboutMe} />          
           <Route exact path="/Login" component={Login} />             
           <Route path="/Product" component={Product} />          
+          <Route path="/RegisterFilter" component={RegisterFilter} />              
           <Route path="*" component={Page404} />
 				</Switch>
 

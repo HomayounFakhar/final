@@ -144,17 +144,6 @@ function BuyNow() {
 
   pagination={{ pageSize: 5 }}/>
 
-
-
-<Card title="Filter by Price" style={{ width: 300 }}> 
-          
-          <Input/>
-          <Divider>To</Divider>
-          <Input/>     
-          <Divider></Divider>               
-          <Button >Filter</Button>           
-         </Card>  
-
     </>
   )};
 
