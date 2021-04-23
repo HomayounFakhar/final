@@ -12,15 +12,16 @@ const Login = () => {
    
 
    /// Change Value Global
-   const initalState = {
-    Username : Username,
-    Password: Password
-    };
+  
     function ChangeGlobalValues () {
-    setState(initalState);
-    //////////////////////
-
-}
+      const initalState = {
+        Username : Username,
+        Password: Password
+        };      
+        setState(initalState);
+        console.log(state.Password)
+        //////////////////////
+    }
 
     return (
     <>

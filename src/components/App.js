@@ -16,7 +16,7 @@ import {
   Link
 } from "react-router-dom";
 
-import { Layout, Menu, Breadcrumb, Typography } from 'antd';
+import { Layout, Menu, Breadcrumb, Image, Typography,Divider ,Card} from 'antd';
 import { UserOutlined, NotificationOutlined } from '@ant-design/icons';
 
 
@@ -74,12 +74,14 @@ return(
     <Layout>
      
       <Sider width={200} className="site-layout-background">
+  
         <Menu
           mode="inline"
           defaultSelectedKeys={['1']}
           defaultOpenKeys={['sub1']}
           style={{ height: '100%', borderRight: 0 }}
         >
+              
           <SubMenu key="Sub1" icon={<UserOutlined />} title={state.Username+"-List"}>
                 <Menu.Item key="1">Product Name 1</Menu.Item>
                 <Menu.Item key="2">Product Name 2</Menu.Item>
@@ -90,7 +92,23 @@ return(
               <Menu.Item key="5">Sale Is Comming !</Menu.Item>
               <Menu.Item key="6">Hire in Our Web Store</Menu.Item>
           </SubMenu>
+          <Divider orientation="left">{state.ProductName}</Divider>          
 
+          <Image width={150} src={"http://sarafan.today/img/"+state.ProductCode+".png"} />
+          <Divider>Click to see larger !"</Divider>
+
+          <Card title="Over View" style={{ width: 200 }}>
+              <p>ProductCode : {state.ProductCode} </p>
+              <p>SetProductName : {state.ProductName}</p>
+              <p>OldPrice : {state.OldPrice}</p>          
+              <p>Price : {state.Price}</p>        
+              <p>You Save : {state.OldPrice-state.Price}</p>                                         
+         </Card>   
+         <Card title="Detail ..." style={{ width: 200 }}>
+              <p>Group : {state.Group}</p>
+              <p>Size : {state.SizeAvailabliy}</p>
+              <p>Description : {state.Description}</p>                                              
+         </Card>            
         </Menu>
       </Sider>
 

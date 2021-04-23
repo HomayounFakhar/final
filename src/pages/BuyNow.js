@@ -89,53 +89,45 @@ function BuyNow() {
   const [MaxPrice , SetMaxPrice] = useState(10000000);    
   
   function Filtring () {
-    
+  
      console.log("1212")
     };  
   
 
+    // Gobal Values
+    function ChangeGlobalValues () {
+      const initalState = {
+        ProductCode : ProductCode ,
+        ProductName : ProductName,
+        Price : Price,     
+        OldPrice : OldPrice,    
+        Description : Description ,
+        Group : Group, 
+        SizeAvailabliy : SizeAvailabliy
+        };      
+        setState(initalState);
+        console.log("ChangeGlobalValues")
+        //////////////////////
+    }
+    
   ////
 
   // Get Data From Firebase
-  const [Product, setProduct] = React.useState([])
-  React.useEffect(() => {
-     const fetchData = async () => {
-        const data = await firebase.firestore().collection("Products").where(ItemFilter, "<=", MaxPrice).where(ItemFilter, ">=", MinPrice).get()
-        setProduct(data.docs.map(doc => ({ ...doc.data(),id: doc.id})))    
-    }
-    fetchData()
-  } , [] )
+    const [Product, setProduct] = React.useState([])
+    React.useEffect(() => {
+      const fetchData = async () => {
+          const data = await firebase.firestore().collection("Products").where(ItemFilter, "<=", MaxPrice).where(ItemFilter, ">=", MinPrice).get()
+          setProduct(data.docs.map(doc => ({ ...doc.data(),id: doc.id})))    
+      }
+      fetchData()
+    } , [] )
   
   return (
     <>
   <h1>You are login as : {state.Username}</h1>
   <br></br>
-        <Divider orientation="left">{ProductName}</Divider>
-        <Button onClick={OnAdd} type="primary">Add To Shopping Cart</Button>  
-                                          
-          <Space>
-
-        <Card title="Click on img to see larger !" style={{ width: 300 }}> 
-          <Image width={150} src={"http://sarafan.today/img/"+ProductCode+".png"} />  
-          
-         </Card>       
-
-         <Card title="Over View" style={{ width: 300 }}>
-          <p>ProductCode : {ProductCode}</p>
-          <p>OldPrice : {OldPrice}</p>
-          <p>Price : {Price} </p>          
-          <p>You Save : {Price-OldPrice}</p>                                     
-         </Card>              
-
-         <Card title="Detail ..." style={{ width: 300 }}>
-          <p>Group : {Group}</p>
-          <p>Size : {SizeAvailabliy}</p>
-          <p>Description : {Description}</p>                     
-         </Card>                                    
-  </Space>
-
-    <Divider>Click on your product to see more deatil</Divider>
-
+        
+    <Button onClick={OnAdd} type="primary">Add To Shopping Cart</Button>  
 
 <Table columns={columns} dataSource={Product}
    onRow={(record, rowIndex) => {
@@ -149,7 +141,7 @@ function BuyNow() {
               SetGroup(record.Group);      
               SetSizeAvailabliy(record.SizeAvailabliy);   
 
-              console.log(record.ProductName);
+              ChangeGlobalValues ()
       }, // click row
 
       onDoubleClick: event => {

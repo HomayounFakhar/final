@@ -2,7 +2,14 @@ import React, { useState } from 'react';
 
 const initalState = {
 Username : '',
-Password : '12345'
+Password : '12345',
+ProductName :'',  
+ProductCode  :'',
+OldPrice  :'',
+Price  :'',
+Description  :'', 
+Group  :'',
+SizeAvailabliy  :'',
 };
 
 export const Context = React.createContext();
