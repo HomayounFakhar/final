@@ -16,7 +16,7 @@ import {
   Link
 } from "react-router-dom";
 
-import { Layout, Menu, Breadcrumb, Image, Typography,Divider ,Card} from 'antd';
+import { Layout, Menu, Breadcrumb, Image, Typography,Divider ,Card , Button} from 'antd';
 import { UserOutlined, NotificationOutlined } from '@ant-design/icons';
 
 
@@ -64,7 +64,7 @@ return(
           <Menu.Item onClick={RouteName} names ="About Me">{itemC}
           <Link to="/AboutMe"></Link>
           </Menu.Item>        
-          <Menu.Item onClick={RouteName} names ="Login">{itemL}
+          <Menu.Item onClick={RouteName} names ="Login">{itemL} ({state.Username})
           <Link to="/Login"></Link>
           </Menu.Item>  
 
@@ -92,11 +92,13 @@ return(
               <Menu.Item key="5">Sale Is Comming !</Menu.Item>
               <Menu.Item key="6">Hire in Our Web Store</Menu.Item>
           </SubMenu>
-          <Divider orientation="left">{state.ProductName}</Divider>          
-
+    
+          <Divider>Last Visited</Divider>          
+   
           <Image width={150} src={"http://sarafan.today/img/"+state.ProductCode+".png"} />
-          <Divider>Click to see larger !"</Divider>
-
+          
+          <Divider orientation="left">{state.ProductName}</Divider>       
+        
           <Card title="Over View" style={{ width: 200 }}>
               <p>ProductCode : {state.ProductCode} </p>
               <p>SetProductName : {state.ProductName}</p>
@@ -104,11 +106,13 @@ return(
               <p>Price : {state.Price}</p>        
               <p>You Save : {state.OldPrice-state.Price}</p>                                         
          </Card>   
+
          <Card title="Detail ..." style={{ width: 200 }}>
               <p>Group : {state.Group}</p>
               <p>Size : {state.SizeAvailabliy}</p>
               <p>Description : {state.Description}</p>                                              
-         </Card>            
+         </Card>     
+         <Button type="primary">Add Shopping Cart +</Button>                
         </Menu>
       </Sider>
 

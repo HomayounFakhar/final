@@ -62,13 +62,13 @@ function BuyNow() {
  {
 
  firebase.firestore().collection("ShoppingCart").add ({
-   ProductCode : ProductCode ,
-   ProductName : ProductName,
-   Price : Price,     
-   OldPrice : OldPrice,
-   Description : Description,  
-   Group : Group,
-   SizeAvailabliy : SizeAvailabliy,
+   ProductCode : state.ProductCode ,
+   ProductName : state.ProductName,
+   Price : state.Price,     
+   OldPrice : state.OldPrice,
+   Description : state.Description,  
+   Group : state.Group,
+   SizeAvailabliy : state.SizeAvailabliy,
    UserName : state.Username
  })
  }
@@ -103,7 +103,8 @@ function BuyNow() {
         OldPrice : OldPrice,    
         Description : Description ,
         Group : Group, 
-        SizeAvailabliy : SizeAvailabliy
+        SizeAvailabliy : SizeAvailabliy,
+        Username : state.Username
         };      
         setState(initalState);
         console.log("ChangeGlobalValues")
@@ -124,10 +125,7 @@ function BuyNow() {
   
   return (
     <>
-  <h1>You are login as : {state.Username}</h1>
-  <br></br>
-        
-    <Button onClick={OnAdd} type="primary">Add To Shopping Cart</Button>  
+    <Button onClick={OnAdd} type="primary">Add ( {ProductName} ) Shopping Cart +</Button>  
 
 <Table columns={columns} dataSource={Product}
    onRow={(record, rowIndex) => {
@@ -154,6 +152,8 @@ function BuyNow() {
   }}
 
   pagination={{ pageSize: 5 }}/>
+
+
 
 <Card title="Filter by Price" style={{ width: 300 }}> 
           

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const initalState = {
 Username : '',
-Password : '12345',
+Password : '',
 ProductName :'',  
 ProductCode  :'',
 OldPrice  :'',
