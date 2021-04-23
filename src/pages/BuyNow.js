@@ -1,4 +1,4 @@
-import React , { useState , useContext} from 'react';
+import React , { useState , useContext , useEffect} from 'react';
 import {Input, Image, Table ,Typography  , Divider , Layout ,Space,Card ,Button} from 'antd';
 import firebase from './firebase'
 import { Context } from '../context/Storage'
@@ -19,7 +19,7 @@ const columns = [
   },
   {
     title: 'Product Name',
-    dataIndex: 'ProductName',
+    dataIndex: 'ProductName',   
     sorter: (a, b) => a.ProductName.length - b.ProductName.length,
     sortDirections: ['descend', 'ascend'],
   },   
@@ -103,15 +103,16 @@ function BuyNow() {
   ////
 
   // Get Data From Firebase
-    const [Product, setProduct] = React.useState([])
-    React.useEffect(() => {
+    const [Product, setProduct] = useState([])
+
+    useEffect(() => {
       const fetchData = async () => {
-          const data = await firebase.firestore().collection("Products").where("Price", "<", filter.MaxPrice).where("Price", ">", filter.MinPrice).get()
+          const data = await firebase.firestore().collection("Products").where("Price", ">=", filter.MinPrice).where("Price", "<=", filter.MaxPrice).get()
           setProduct(data.docs.map(doc => ({ ...doc.data(),id: doc.id})))    
       }
       fetchData()
     } , [] )
-  
+
   return (
     <>
     <Button onClick={OnAdd} type="primary">Add ( {ProductName} ) Shopping Cart +</Button>  

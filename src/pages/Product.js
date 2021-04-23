@@ -1,4 +1,4 @@
-import React , { useState , useContext} from 'react';
+import React , { useState , useContext , useEffect} from 'react';
 import firebase from './firebase'
 import { Table ,Typography , Button , Divider} from 'antd';
 import { Context } from '../context/Storage'
@@ -55,8 +55,8 @@ function Product() {
  const [state, setState] = useContext(Context);
 
   // Get Data From Firebase 
-  const [Product, setProduct] = React.useState([])
-  React.useEffect(() => {
+  const [Product, setProduct] = useState([])
+  useEffect(() => {
      const fetchData = async () => {
         const data = await firebase.firestore().collection("ShoppingCart").where("UserName", "==", state.Username).get()
         setProduct(data.docs.map(doc => ({ ...doc.data(),id: doc.id})))    

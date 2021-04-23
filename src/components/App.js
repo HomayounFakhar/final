@@ -48,11 +48,14 @@ function App() {
 
  const [MinPrice , SetMinPrice] = useState();    
  const [MaxPrice , SetMaxPrice] = useState();    
+ const [filterProductName , SetfilterProductName] = useState("T-Shirt");    
+ 
 
   function ChangeFiltering () {
     const initalState = {
       MinPrice : MinPrice,
       MaxPrice : MaxPrice,
+      filterProductName : filterProductName,
       };      
       setFilter(initalState);
       console.log("ChangeGlobalValues")
@@ -113,14 +116,20 @@ return(
           <SubMenu key="Sub3" rotate={180} icon={<SyncOutlined />} title="Search">
           <Card title="" style={{ width: 200 }}> 
           <p>Min Price</p>
-          <Input Key="MinPrice" defaultValue={MinPrice} onChange={event => SetMinPrice(event.target.value)} />
+          <Input onChange={event => SetMinPrice(parseInt(event.target.value))} />
           <Divider>To</Divider>
-          <Input Key="MaxPrice" defaultValue={MaxPrice} onChange={event => SetMaxPrice(event.target.value)}/>     
-          <Divider></Divider>               
+          <Input onChange={event => SetMaxPrice(parseInt(event.target.value))}/>     
+          <Divider>ProductName</Divider>               
+          <Input onChange={event => SetfilterProductName(event.target.value)}/>            
           <Button onClick={ChangeFiltering}>Filter
-          <Link to="/BuyNow"></Link>
+
           </Button>   
-          <p>{filter.MinPrice}</p>        
+          <p>MinPrice : </p>        
+          <p>{filter.MinPrice}</p>   
+          <br></br>
+          <p>MaxPrice :</p>   
+          <p>{filter.MaxPrice}</p>     
+          <p>{filterProductName} : filterProductName</p>                            
          </Card>  
 
           </SubMenu>          
