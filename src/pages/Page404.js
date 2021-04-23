@@ -10,9 +10,6 @@ function Page404() {
     <div>
          <Image width={200}src={page404}/>
          <Title level={2}>Page Not Found</Title>
-         <br></br>
-         <Button href="/" type="primary">Go To  HomePage</Button>
-
     </div>
   )};
 

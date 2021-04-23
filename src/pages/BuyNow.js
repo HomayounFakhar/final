@@ -2,6 +2,7 @@ import React , { useState , useContext} from 'react';
 import {Input, Image, Table ,Typography  , Divider , Layout ,Space,Card ,Button} from 'antd';
 import firebase from './firebase'
 import { Context } from '../context/Storage'
+import { ContextFilter } from '../context/Filtering'
 
 const { Text } = Typography;
 const { Header, Footer, Sider, Content } = Layout;
@@ -57,6 +58,9 @@ function BuyNow() {
  //Global 
  const [state, setState] = useContext(Context);
 
+ //ContextFiltering - Global
+ const [Filter, setFilter] = useContext(ContextFilter); 
+ 
  // Add To ShoppingCart
  const OnAdd = () => 
  {
@@ -93,6 +97,15 @@ function BuyNow() {
      console.log("1212")
     };  
   
+
+    function ChangeFiltering () {
+      const initalState = {
+        Price : "Price" ,
+        };      
+        setFilter(initalState);
+        console.log("ChangeGlobalValues")
+        //////////////////////
+    }
 
     // Gobal Values
     function ChangeGlobalValues () {
@@ -140,6 +153,7 @@ function BuyNow() {
               SetSizeAvailabliy(record.SizeAvailabliy);   
 
               ChangeGlobalValues ()
+              ChangeFiltering ()
       }, // click row
 
       onDoubleClick: event => {

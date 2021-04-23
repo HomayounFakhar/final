@@ -54,7 +54,6 @@ function Product() {
  //Global 
  const [state, setState] = useContext(Context);
 
-
   // Get Data From Firebase 
   const [Product, setProduct] = React.useState([])
   React.useEffect(() => {
@@ -79,7 +78,6 @@ return(
     return {
       onClick: event => {
         firebase.firestore().collection("ShoppingCart").doc(record.id).delete()
-        
       }, // click row
 
       onDoubleClick: event => {

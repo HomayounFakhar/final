@@ -17,7 +17,7 @@ import {
 } from "react-router-dom";
 
 import { Layout, Menu, Breadcrumb, Image, Typography,Divider ,Card , Button} from 'antd';
-import { UserOutlined, NotificationOutlined } from '@ant-design/icons';
+import { UserOutlined, NotificationOutlined , SyncOutlined} from '@ant-design/icons';
 
 
 const { SubMenu } = Menu;
@@ -31,7 +31,7 @@ function App() {
   // Menu Items
   const [itemF , setFItem] = useState("BuyNow !");  
   const [itemS , setS2Item] = useState("Shopping Cart");  
-  const [itemT , setTItem] = useState("Contact Us");    
+  const [itemT , setTItem] = useState("Control Panel");    
   const [itemC , setCItem] = useState("About Us");    
   const [itemL , setitemL] = useState("Login");      
 
@@ -58,16 +58,16 @@ return(
           <Menu.Item onClick={RouteName} names ="Shopping Cart">{itemS} 
           <Link to="/Product"></Link>
           </Menu.Item>      
-          <Menu.Item onClick={RouteName} names ="Contact Us">{itemT}
-          <Link to="/ContactUs"></Link>
-          </Menu.Item>
+
           <Menu.Item onClick={RouteName} names ="About Me">{itemC}
           <Link to="/AboutMe"></Link>
           </Menu.Item>        
           <Menu.Item onClick={RouteName} names ="Login">{itemL} ({state.Username})
           <Link to="/Login"></Link>
           </Menu.Item>  
-
+          <Menu.Item onClick={RouteName} names ="Control Panel">{itemT}
+          <Link to="/ContactUs"></Link>
+          </Menu.Item>
       </Menu>
 
     </Header>
@@ -91,7 +91,13 @@ return(
           <SubMenu key="sub2" icon={<NotificationOutlined />} title="News">
               <Menu.Item key="5">Sale Is Comming !</Menu.Item>
               <Menu.Item key="6">Hire in Our Web Store</Menu.Item>
-          </SubMenu>
+          </SubMenu> 
+          <SubMenu key="Sub3"  rotate={180} icon={<SyncOutlined />} title="Search">
+                <Menu.Item key="1">Product Name 1</Menu.Item>
+                <Menu.Item key="2">Product Name 2</Menu.Item>
+                <Menu.Item key="3">Product Name 3</Menu.Item>
+                <Menu.Item key="4">Product Name 4</Menu.Item>
+          </SubMenu>          
     
           <Divider>Last Visited</Divider>          
    
