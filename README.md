@@ -2,9 +2,12 @@ Web store web store
 React JS & Firebase
 
 
+
 Sample of WebStore
 Include Routing , Global Variable , UseState and ... 
 Design by "ant.design"
+
+(Wrong Addressing (404) is working on local Host)
 
 Short Demo on
 https://www.youtube.com/watch?v=-edKikrorj4
@@ -12,9 +15,9 @@ https://www.youtube.com/watch?v=-edKikrorj4
 How to install ant.design
 https://ant.design/docs/react/use-with-create-react-app
 
-
 Live static on
-Sarafan.Today
+https://www.Sarafan.Today
+
 
 npm install react-axios
 npm install axios
