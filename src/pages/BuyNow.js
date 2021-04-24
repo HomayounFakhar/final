@@ -5,7 +5,6 @@ import { Context } from '../context/Storage'
 import { ContextFilter } from '../context/Filtering'
 
 const { Text } = Typography;
-const { Header, Footer, Sider, Content } = Layout;
 
 const columns = [
   {
@@ -85,7 +84,7 @@ function BuyNow() {
   const [Group , SetGroup] = useState("");  
   const [SizeAvailabliy , SetSizeAvailabliy] = useState("");                
 
-
+  // Count Product
   const [CountProduct , SetCountProduct] = useState("0");    
 
     // Gobal Values
@@ -130,9 +129,9 @@ function BuyNow() {
     <>
     
     <Card title="" style={{ width: 200 }}> 
-    <Input defaultValue={CountProduct} onChange={event => SetCountProduct(event.target.value)} />       
-    <Divider></Divider> 
-    <Button onClick={OnAdd} type="primary">Add ( {ProductName} ) Shopping Cart +</Button> 
+      <Input defaultValue={CountProduct} onChange={event => SetCountProduct(event.target.value)} />       
+      <Divider></Divider> 
+      <Button onClick={OnAdd} type="primary">Add ( {ProductName} ) Shopping Cart +</Button> 
      </Card>
 
 <Table columns={columns} dataSource={Product}

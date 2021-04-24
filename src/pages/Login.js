@@ -11,8 +11,7 @@ const Login = () => {
    const [Password, Setpassword] = useState('')   
    
 
-   /// Change Value Global
-  
+    /// Change Value Global
     function ChangeGlobalValues () {
       const initalState = {
         Username : Username,
@@ -31,7 +30,6 @@ const Login = () => {
           <Divider></Divider> 
       <Input.Password Key="Password" addonBefore="Password  " onChange={event => Setpassword(event.target.value)} />
           <Divider></Divider>
-    
       <Button onClick={ChangeGlobalValues} type="primary">Login To Store</Button>
 </Card>    
  

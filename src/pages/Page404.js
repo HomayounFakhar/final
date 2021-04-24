@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography ,Button , Image} from 'antd';
+import { Typography , Image} from 'antd';
 import page404 from './../img/404.png'
 
 const { Title}  = Typography;
