@@ -6,6 +6,8 @@ Sample of WebStore
 Include Routing , Global Variable , UseState and ... 
 Design by "ant.design"
 
+Short Demo on
+https://www.youtube.com/watch?v=-edKikrorj4
 
 How to install ant.design
 https://ant.design/docs/react/use-with-create-react-app

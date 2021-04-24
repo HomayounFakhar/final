@@ -54,7 +54,7 @@ return(
 
       <Menu theme="dark" mode="horizontal" defaultSelectedKeys={'1'}>
 
-          <Menu.Item href="/Product" type="primary" onClick={RouteName} key="1" names ="BuyNow !">{itemF}
+          <Menu.Item href="/Product" onClick={RouteName} key="1" names ="BuyNow !">{itemF}
           <Link to="/BuyNow"></Link>
           </Menu.Item> 
           <Menu.Item onClick={RouteName} names ="Shopping Cart">{itemS} 
@@ -64,7 +64,7 @@ return(
           <Menu.Item onClick={RouteName} names ="About Me">{itemC}
           <Link to="/AboutMe"></Link>
           </Menu.Item>        
-          <Menu.Item onClick={RouteName} names ="Login">{itemL} ({state.Username})
+          <Menu.Item onClick={RouteName} type="primary"  names ="Login">{itemL} ({state.Username})
           <Link to="/Login"></Link>
           </Menu.Item>  
           <Menu.Item onClick={RouteName} names ="RegisterFilter">{itemT}
