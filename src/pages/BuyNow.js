@@ -1,5 +1,5 @@
 import React , { useState , useContext , useEffect} from 'react';
-import {Input, Image, Table ,Typography  , Divider , Layout ,Space,Card ,Button} from 'antd';
+import {Input, Image, Table ,Typography  , InputNumber  , Layout ,Space,Card ,Button, Divider} from 'antd';
 import firebase from './firebase'
 import { Context } from '../context/Storage'
 import { ContextFilter } from '../context/Filtering'
@@ -71,7 +71,8 @@ function BuyNow() {
    Description : state.Description,  
    Group : state.Group,
    SizeAvailabliy : state.SizeAvailabliy,
-   UserName : state.Username
+   CountProduct : CountProduct,   
+   UserName : state.Username,
  })
  }
 
@@ -83,6 +84,9 @@ function BuyNow() {
   const [Description , SetPDescription] = useState("");  
   const [Group , SetGroup] = useState("");  
   const [SizeAvailabliy , SetSizeAvailabliy] = useState("");                
+
+
+  const [CountProduct , SetCountProduct] = useState("0");    
 
     // Gobal Values
     function ChangeGlobalValues () {
@@ -99,8 +103,6 @@ function BuyNow() {
         setState(initalState);
         //////////////////////
     }
-    
-  ////
 
   // Get Data From Firebase
     const [Product, setProduct] = useState([])
@@ -127,7 +129,11 @@ function BuyNow() {
   return (
     <>
     
-    <Button onClick={OnAdd} type="primary">Add ( {ProductName} ) Shopping Cart +</Button>  
+    <Card title="" style={{ width: 200 }}> 
+    <Input defaultValue={CountProduct} onChange={event => SetCountProduct(event.target.value)} />       
+    <Divider></Divider> 
+    <Button onClick={OnAdd} type="primary">Add ( {ProductName} ) Shopping Cart +</Button> 
+     </Card>
 
 <Table columns={columns} dataSource={Product}
    onRow={(record, rowIndex) => {

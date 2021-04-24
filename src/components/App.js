@@ -83,13 +83,7 @@ return(
           defaultOpenKeys={['sub1']}
           style={{ height: '100%', borderRight: 0 }}
         >
-              
-          <SubMenu key="Sub1" icon={<UserOutlined />} title={state.Username+"-List"}>
-                <Menu.Item key="1">Product Name 1</Menu.Item>
-                <Menu.Item key="2">Product Name 2</Menu.Item>
-                <Menu.Item key="3">Product Name 3</Menu.Item>
-                <Menu.Item key="4">Product Name 4</Menu.Item>
-          </SubMenu>
+
           <SubMenu key="sub2" icon={<NotificationOutlined />} title="News">
               <Menu.Item key="5">Sale Is Comming !</Menu.Item>
               <Menu.Item key="6">Hire in Our Web Store</Menu.Item>

@@ -29,7 +29,7 @@ const Login = () => {
 <Card title="Enter your username to have your own Cart !" style={{ width: 500 }}>
       <Input Key="Username" addonBefore="Username " defaultValue={state.Username} onChange={event => SetUsername(event.target.value)} />
           <Divider></Divider> 
-      <Input Key="Password" addonBefore="Password  " onChange={event => Setpassword(event.target.value)} />
+      <Input.Password Key="Password" addonBefore="Password  " onChange={event => Setpassword(event.target.value)} />
           <Divider></Divider>
     
       <Button onClick={ChangeGlobalValues} type="primary">Login To Store</Button>

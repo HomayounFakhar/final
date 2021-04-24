@@ -3,8 +3,17 @@ import firebase from './firebase'
 import { Table ,Typography , Button , Divider} from 'antd';
 import { Context } from '../context/Storage'
 
-const { Text } = Typography;
+const { Text } = Typography;   
 const columns = [
+  {
+   
+    title: 'Count',
+    dataIndex: 'CountProduct',
+    sorter: (a, b) => a.CountProduct - b.CountProduct,
+    sortDirections: ['descend', 'ascend'],
+    render: text => <Text type="success">{text}</Text>,    
+    
+  },  
   {
    
     title: 'Product Code',
