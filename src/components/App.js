@@ -8,9 +8,7 @@ import Login from './../pages/Login';
 import AboutMe from './../pages/AboutMe'
 import RegisterFilter from './../pages/RegisterFilter'
 
-
 import { Context } from './../context/Storage'
-
 
 import {
   BrowserRouter as Router,

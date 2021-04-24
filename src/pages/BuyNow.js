@@ -104,10 +104,21 @@ function BuyNow() {
 
   // Get Data From Firebase
     const [Product, setProduct] = useState([])
-
     useEffect(() => {
       const fetchData = async () => {
-          const data = await firebase.firestore().collection("Products").where("Price", ">=", filter.MinPrice).where("Price", "<=", filter.MaxPrice).get()
+
+        let data = await firebase.firestore().collection("Products").get() 
+
+        if (filter.MinPrice)  
+        {
+          data = await firebase.firestore().collection("Products").where("Price", ">=", filter.MinPrice).where("Price", "<=", filter.MaxPrice).get() 
+        };    
+
+        if (filter.FilterProductName)  
+        {
+          data = await firebase.firestore().collection("Products").where("ProductName", "==", filter.FilterProductName).get()            
+        };           
+
           setProduct(data.docs.map(doc => ({ ...doc.data(),id: doc.id})))    
       }
       fetchData()
@@ -115,6 +126,7 @@ function BuyNow() {
 
   return (
     <>
+    
     <Button onClick={OnAdd} type="primary">Add ( {ProductName} ) Shopping Cart +</Button>  
 
 <Table columns={columns} dataSource={Product}

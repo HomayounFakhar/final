@@ -8,30 +8,34 @@ const RegisterFilter = () => {
  const [filter, setFilter] = useContext(ContextFilter); 
 
  const [MinPrice , SetMinPrice] = useState();    
- const [MaxPrice , SetMaxPrice] = useState();    
+ const [MaxPrice , SetMaxPrice] = useState();
+ const [FilterProductName , SetFilterProductName] = useState();
 
   function ChangeFiltering () {
     const initalState = {
-      MinPrice : MinPrice,
-      MaxPrice : MaxPrice
+      MinPrice : parseInt(MinPrice),
+      MaxPrice : parseInt(MaxPrice),
+      FilterProductName : FilterProductName,    
       };      
       setFilter(initalState);
       console.log("ChangeGlobalValues")
       //////////////////////
   }
 
-
     return (
     <>
 
           <Card title="" style={{ width: 200 }}> 
             <p>Min Price</p>
-            <Input onChange={event => SetMinPrice(parseInt(event.target.value))} />
+            <Input placeholder={filter.MinPrice} onChange={event => SetMinPrice(event.target.value)} />
               <Divider>To</Divider>
-            <Input onChange={event => SetMaxPrice(parseInt(event.target.value))}/>   
-              <Divider></Divider>                  
-            <Button onClick={ChangeFiltering}>Click to Register Filter</Button>   
-         </Card>  
+            <Input placeholder={filter.MaxPrice} onChange={event => SetMaxPrice(event.target.value)}/>   
+              <Divider></Divider>
+            <p>Product Name</p>
+            <Input placeholder={filter.FilterProductName} onChange={event => SetFilterProductName(event.target.value)} />            
+            <Divider></Divider>                
+            <Button onClick={ChangeFiltering}>Regiter Filter</Button>               
+         </Card>           
 
     </>
 
